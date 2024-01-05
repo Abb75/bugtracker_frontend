@@ -204,6 +204,7 @@ export const LoginApi = (email, password) => async(dispatch) => {
         )
       dispatch({
         type: TOKEN_USER_SUCCESS,
+        
         payload: data
       })  
       console.log(data)
