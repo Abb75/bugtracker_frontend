@@ -197,10 +197,11 @@ export const LoginApi = (email, password) => async(dispatch) => {
 
     try{
       dispatch({type: TOKEN_USER_REQUEST})
-        const {data} =  await  axiosInstance.post(`http://127.0.0.1:8000/api/token/`, {
+     
+        const {data} =  await  axiosInstance.post(process.env.REACT_APP_API_URL + 'token/', {
         email : email, 
         password : password}
-        )     
+        )
       dispatch({
         type: TOKEN_USER_SUCCESS,
         payload: data
