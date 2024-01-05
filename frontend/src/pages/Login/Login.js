@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetUserApi } from '../../redux/actions/userActions';
 //import deskImage from '../../../public/img/desk.png'
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
-import { SendSuccessNotification } from '../../components/Alert';
+import { SendErrorNotification, SendSuccessNotification } from '../../components/Alert';
 import '../../App.css';
 import { LoginApi } from '../../redux/actions/userActions';
 
@@ -105,11 +105,12 @@ const handleSubmitLoginDemo = async (user) => {
       ///await dispatchUserData()  
       setIsAuthenticated(true);
      
-      SendSuccessNotification('Login with success')
+      SendSuccessNotification('Login with success !')
     } else {
       console.log('Utilisateur non valide');
     }
   } catch (error) {
+    SendErrorNotification('Login failed !')
     console.log('Erreur lors de la connexion de démonstration :', error);
   }
 };
