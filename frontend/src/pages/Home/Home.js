@@ -89,7 +89,7 @@ const BugTrackerPage = () => {
         </div>
 
         <div style={{ backgroundColor: '#fff', maxWidth: '800px', margin: '0 auto', padding: '2rem', borderRadius: '8px', marginTop: '2rem', textAlign: 'center' }}>
-          <Link href="/#/login">
+          <Link href="#/login">
             <Button variant="contained" color="primary" size="large">
               Essayez notre Bug Tracker
             </Button>
