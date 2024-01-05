@@ -30,6 +30,8 @@ import {UserProfile} from './components/account/infoUser';
 import { UserPassword } from './components/account/UpdatePassword';
 import { GetTokenUser } from './redux/selectors/userSelectors';
 import Example, { NewChart } from './pages/Dashboard/Charts/Bug/ChartAdmin';
+import { HashRouter } from 'react-router-dom';
+
 
 function App() {
   //const value = useContext(UserContext)
@@ -90,11 +92,11 @@ function App() {
 
 function AppWithRouter() {
   return (
-    <BrowserRouter>
+    <HashRouter>
    
       <App /> 
     
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
