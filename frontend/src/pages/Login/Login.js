@@ -61,7 +61,7 @@ export  const Login = () => {
         //setIsAuthenticated(true)
 
     }catch(error){
-      console.log(error)
+      throw error
   }
   }
 
@@ -93,8 +93,8 @@ export  const Login = () => {
 const userLoginDemoInfo = {
   //'Admin': { email: 'demoadmin@example.com', password: 'passwordadmin1' },
   'Admin': { email: 'demoadmin@example.com', password: 'passwordadmin1' },
-  'Developer': { email: 'demodeveloper@example.com', password: 'passworddeveloper1' },
-  'Submitter': { email: 'demosubmitter@example.com', password: 'passwordsubmitter1' }
+  'Developer': { email: 'demodeveloper@example.com', password: 'passworddev1' },
+  'Submitter': { email: 'demosubmitter@example.com', password: 'passwordsub1' }
 };
 
 const handleSubmitLoginDemo = async (user) => {
