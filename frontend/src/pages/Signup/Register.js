@@ -128,18 +128,18 @@ useEffect(() => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Inscription !!!
+            Inscription 
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="email222222222222222222"
+                  name="email"
                   required
                   fullWidth
                   id="email"
-                  label="email2222222222222"
+                  label="email"
                   autoFocus
                   onChange={handleChange}
                   sx={{ backgroundColor: 'background.paper' }}
