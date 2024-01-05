@@ -60,7 +60,7 @@ export default function SignUp() {
   const submitData = async() => {
     console.log(email, first_name, last_name, phone, password)
     try{
-      await axios.post(`https://bugtracker-backend-7hya.onrender.com/api/users` , {
+      await axios.post(`https://bugtracker-backend-7hya.onrender.com/api/users/` , {
           email : email,
           first_name : first_name, 
           last_name: last_name,
