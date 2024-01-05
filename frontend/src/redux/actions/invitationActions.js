@@ -16,7 +16,7 @@ export const GetInvitationUser = (tokenUser) => async(dispatch) => {
                  
              } 
          } 
-        const {data} = await axios.get(`http://127.0.0.1:8000/api/guests/` , config )
+        const {data} = await axios.get(process.env.REACT_APP_API_URL + 'guests/' , config )
          console.log(data)
          dispatch({
              type: INVITATION_USER_SUCCESS,
@@ -53,7 +53,7 @@ export const GetInvitationUser = (tokenUser) => async(dispatch) => {
                 Authorization: `Bearer ${tokenUser}`,
             
             }}
-               await  axiosInstance.patch(`http://127.0.0.1:8000/api/project/${projectId}/invitation/${invitationId}/` , {
+               await  axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/invitation/${invitationId}/` , {
                 accepted : value } , config )
             
              
@@ -80,7 +80,7 @@ export const GetInvitationUser = (tokenUser) => async(dispatch) => {
            
          } 
           
-           await axios.delete(`http://127.0.0.1:8000/api/project/${projectId}/invitation/${invitationId}/`, config )
+           await axios.delete(process.env.REACT_APP_API_URL + `project/${projectId}/invitation/${invitationId}/`, config )
            
            
          }catch(error){
@@ -105,7 +105,7 @@ export const GetInvitationUser = (tokenUser) => async(dispatch) => {
       
          } 
           
-           await axios.post(`http://127.0.0.1:8000/api/project/${project_id}/invitation/` ,{
+           await axios.post(process.env.REACT_APP_API_URL + `project/${project_id}/invitation/` ,{
              name : formData.name,
              role : formData.role,
              email : formData.email,

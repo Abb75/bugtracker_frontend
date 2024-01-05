@@ -38,7 +38,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
              
           }
       } 
-      await axios.post(`http://127.0.0.1:8000/api/project/${id}/bug/` ,
+      await axios.post(process.env.REACT_APP_API_URL + `${id}/bug/` ,
      {
      
         title : formData.title,
@@ -75,7 +75,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
                 
             } 
         } 
-        const {data} = await axios.get(`http://127.0.0.1:8000/api/bug/` , config )
+        const {data} = await axios.get(process.env.REACT_APP_API_URL + 'bug/' , config )
         console.log(data)
         dispatch({
             type: ALL_BUG_DATA_SUCCESS,
@@ -107,7 +107,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
         
           } 
             
-          const {data} = await axios.get(`http://127.0.0.1:8000/api/project/${id}/bug/` , config )
+          const {data} = await axios.get(process.env.REACT_APP_API_URL+ `project/${id}/bug/` , config )
             dispatch({
                 type: BUG_PROJECT_SUCCESS,
                 payload: data
@@ -146,7 +146,7 @@ export const UpdateBugApi =  (projectId, bugId, tokenUser, value, property) => a
                   }
               }
           
-              const {data} = await axios.patch(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/`, {
+              const {data} = await axios.patch(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, {
                   [property]:  value
       }, config)
       console.log(data)
@@ -177,7 +177,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
             }
         }
   
-      const {data} = await axios.patch(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/`, {
+      const {data} = await axios.patch(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, {
         assigned_to : user
       }, config)
       console.log(data)
@@ -223,7 +223,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
        
          } 
            
-         const {data} = await axios.get(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/history/` , config )
+         const {data} = await axios.get(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/history/` , config )
            dispatch({
                type: BUG_HISTORY_SUCCESS,
                payload: data
@@ -256,7 +256,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
         
           } 
             
-          const {data} = await axios.get(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/comment/` , config )
+          const {data} = await axios.get(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/comment/` , config )
             dispatch({
                 type: BUG_COMMENT_SUCCESS,
                 payload: data
@@ -289,7 +289,7 @@ export const PostBugCommentApi = async(projectId,bugId,formData, tokenUser) => {
                  
               }
           } 
-          await axios.post(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/comment/` ,
+          await axios.post(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/comment/` ,
          {
             created_by : formData.created_by,
             related_bug : formData.related_bug,
@@ -321,7 +321,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
             
         }
       } 
-    await axios.delete(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/comment/${commentId}/`, config)
+    await axios.delete(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/comment/${commentId}/`, config)
     
     }catch(error){
       console.log(error)
@@ -345,7 +345,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
                  
              } 
          } 
-         const {data} = await axios.get(`http://127.0.0.1:8000/api/project${projectId}/${bugId}/` , config )
+         const {data} = await axios.get(process.env.REACT_APP_API_URL + `project${projectId}/${bugId}/` , config )
          console.log(data)
          
          
@@ -372,7 +372,7 @@ export const DeleteBugApi = async(bugId,projectId,  tokenUser) => {
           Authorization: `Bearer ${tokenUser}`,
       }
     } 
-  await axios.delete(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/`, config)
+  await axios.delete(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, config)
   
   }catch(error){
     throw error
@@ -400,7 +400,7 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
                 
              }
          } 
-          const {data}=  await axios.get(`http://127.0.0.1:8000/api/archived-bug/` , config )
+          const {data}=  await axios.get(process.env.REACT_APP_API_URL + 'archived-bug/' , config )
           console.log(data)
           dispatch({type: ARCHIVED_BUG_SUCCESS,
                     payload: data})
@@ -425,7 +425,7 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
           }
         }
     
-        await axios.patch(`http://127.0.0.1:8000/api/project/${projectId}/bug/${bugId}/`, {
+        await axios.patch(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, {
           is_archived : value,
           archived_by : user
         }, config)

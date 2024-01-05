@@ -23,7 +23,7 @@ import { SendSuccessNotification } from "../../components/Alert";
         }
     } 
           dispatch({type: USER_DATA_REQUEST})
-          const {data} = await  axiosInstance.get(`http://127.0.0.1:8000/api/users/${id}/`,config)
+          const {data} = await  axiosInstance.get(process.env.REACT_APP_API_URL + `users/${id}/`,config)
          console.log(data)
           dispatch({
             type: USER_DATA_SUCCESS,
@@ -71,7 +71,7 @@ export const logout = (tokenUser) => async(dispatch) => {
 
         } 
    
-        const response =  axiosInstance.post('http://127.0.0.1:8000/api/token/blacklist/' ,config,{
+        const response =  axiosInstance.post(process.env.REACT_APP_API_URL + 'token/blacklist/' ,config,{
             refresh_token : localStorage.getItem('refresh_token') , 
             
         });
@@ -140,7 +140,7 @@ export const logout = (tokenUser) => async(dispatch) => {
     
     
     
-     await axios.put(`http://127.0.0.1:8000/api/Register-invitation/${uuid}/` ,{
+     await axios.put(process.env.REACT_APP_API_URL + `Register-invitation/${uuid}/` ,{
        email : formData.email,
        password : formData.password,
        confirm_password : formData.confirm_password,
@@ -174,7 +174,7 @@ export const logout = (tokenUser) => async(dispatch) => {
                 
             }
           }
-        const {data} = await  axiosInstance.get(`http://127.0.0.1:8000/api/guests/`, config)
+        const {data} = await  axiosInstance.get(process.env.REACT_APP_API_URL + 'guests/', config)
         console.log(data ) 
         dispatch({
           type: ALL_INVITATION_BY_ADMIN_USER_SUCCESS,
@@ -204,7 +204,7 @@ export const LoginApi = (email, password) => async(dispatch) => {
         )
       dispatch({
         type: TOKEN_USER_SUCCESS,
-        
+
         payload: data
       })  
       console.log(data)
@@ -240,7 +240,7 @@ export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId, 
           Authorization: `Bearer ${tokenUser}`,
       
       }}
-         await  axiosInstance.patch(`http://127.0.0.1:8000/api/project/${projectId}/invitation/${invitationId}/` , {
+         await  axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/invitation/${invitationId}/` , {
           role : value
         } , config )
   }catch(error){
@@ -281,7 +281,7 @@ export const UpdateUserInfoApi = async(userId, formData, tokenUser) => {
           'Accept': 'application/json',
           Authorization: `Bearer ${tokenUser}`,
       }}
-        await  axiosInstance.patch(`http://127.0.0.1:8000/api/users/${userId}/` , {
+        await  axiosInstance.patch(process.env.REACT_APP_API_URL + `users/${userId}/` , {
             first_name : formData.first_name,
             last_name : formData.last_name,
             email : formData.email,
@@ -312,7 +312,7 @@ export const UpdateUserPasswordApi = async(userId, formData, tokenUser) => {
       
       }}
          await  axiosInstance.patch(
-          `http://127.0.0.1:8000/api/users/${userId}/` ,
+          process.env.REACT_APP_API_URL + `users/${userId}/` ,
           {
             password : formData.password,
             confirm_password : formData.confirm_password,
