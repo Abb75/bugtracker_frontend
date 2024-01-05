@@ -119,7 +119,7 @@ export const Dashboard = () => {
                 <Grid item  xs={12} sm={6} md={4}>
                     <Paper elevation={3} style={{ padding: '10px', height: '500px', width: '100%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
                     <Typography variant="h5" style={{ fontFamily: 'inherit', fontWeight: 'bold',position: 'absolute', textAlign:'center', top:'40px' }}>
-                           Ticket Priority
+                           Ticket Priority!
                         </Typography>
                         <BugChartPriority style={{ flex: 1, margin: '5px' }} />
                     </Paper>
