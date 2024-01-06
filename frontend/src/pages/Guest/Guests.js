@@ -94,7 +94,7 @@ export const GuestsUser = () => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-         ​Guest user management
+       Management of roles for each user
       </Typography>
       <Grid container justifyContent="center" alignItems="center" spacing={3}>
         <Grid style={{ width:'200%', marginTop: '20px', marginBottom: '50px'}} item xs={12} sm={10}>

@@ -21,14 +21,14 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
     const {projectId, bugId} = useParams()
     const bugProject = BugProject()
     const searchSelectedBug = bugProject?.filter(bug => bug.id === parseInt(bugId))
-    //const formatDataBugHistory = () => {
-    //const historyBug = history?.data;
-    //const formatDataBug = historyBug
-      //:?.map(data => JSON.parse(data[0]?.replaceAll("\"", "&quot;")?.replaceAll("'", "\"")))
-      //.filter(Boolean); 
+    const formatDataBugHistory = () => {
+    const historyBug = history?.data;
+    const formatDataBug = historyBug
+      ?.map(data => JSON.parse(data[0]?.replaceAll("\"", "&quot;")?.replaceAll("'", "\"")))
+      .filter(Boolean); 
   
-    //setFormatDataBug([formatDataBug]);
-  
+    setFormatDataBug([formatDataBug]);
+    }
   
   useEffect(() => {
     try{
@@ -42,7 +42,7 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
   }, [projectId, bugId]);
   
   useEffect(() => {
-   setHistoryData(history)
+    formatDataBugHistory();
   }, [history])
   
 
@@ -56,7 +56,7 @@ return (
               <strong>History(s) :</strong> 
             
             </Typography>
-                  {historyData?.map((history) => (
+            {formatDataBug[0]?.map((history) => (
                     <div key={history.id}>
                       <Grid container spacing={2} alignItems="center">
                        
