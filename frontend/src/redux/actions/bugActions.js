@@ -38,7 +38,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
              
           }
       } 
-      await axios.post(process.env.REACT_APP_API_URL + `${id}/bug/` ,
+      await axios.post(process.env.REACT_APP_API_URL + `project/${id}/bug/` ,
      {
      
         title : formData.title,
@@ -434,4 +434,4 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
         console.log(error);
       }
     }
-    
+
