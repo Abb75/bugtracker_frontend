@@ -13,7 +13,7 @@ export const ButtonAddBug = () => {
           color="primary"
           variant="contained"
         >
-         Submit bug!
+         Submit bug
         </Button>
       </Link>
     </Box>
