@@ -165,7 +165,7 @@ return (
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Se connecter
+              Login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -184,7 +184,7 @@ return (
               required
               fullWidth
               name="password"
-              label="Mot de passe"
+              label="²password"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -244,7 +244,6 @@ return (
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

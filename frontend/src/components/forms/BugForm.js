@@ -97,7 +97,7 @@ export const BugForm = () => {
       <Container maxWidth="sm">
         <Box sx={{ marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Typography component="h1" variant="h5">
-            Ajouter un bug
+           New bug
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <TextField
@@ -105,7 +105,7 @@ export const BugForm = () => {
               variant="outlined"
               margin="normal"
               id="title"
-              label="Titre"
+              label="Title"
               value={title}
               onChange={handleChange}
               required
@@ -139,7 +139,7 @@ export const BugForm = () => {
               <InputLabel id="assigned_to_label">Assigné à</InputLabel>
               <Select
                 id="assigned_to"
-                label="Assigné à"
+                label="Assigned to"
                 value={assigned_to}
                 onChange={handleChangeAssigned}
                 sx={{ backgroundColor: 'background.paper' }}
@@ -175,7 +175,7 @@ export const BugForm = () => {
               color="primary"
               sx={{ mt: 3, mb: 2 }}
             >
-              Soumettre
+              Submit
             </Button>
           </Box>
         </Box>

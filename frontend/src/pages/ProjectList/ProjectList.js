@@ -190,7 +190,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
                         
                         <ListItemText
                           primary={item.name}
-                          secondary={`Créé le ${item.submission_date}`}
+                          secondary={`Created at ${item.submission_date}`}
                         />
                       </ListItem>
                       <Divider sx={{ my: 2 }} />
@@ -230,7 +230,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
         </ListItem>
         <ListItem>
           <ListItemText
-            primary="Autres informations"
+            primary="Status"
             secondary={`Statut: ${item.status}`}
           />
         </ListItem> 
