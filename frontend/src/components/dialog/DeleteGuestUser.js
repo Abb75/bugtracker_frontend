@@ -46,7 +46,7 @@ export default function DeleteGuestUserDialog({project, user }) {
   return (
     <React.Fragment>
          <IconButton onClick={handleClickOpen} title="Permanently Delete">
-                  <DeleteIcon style={{ color: 'red' }} />
+                  <DeleteIcon style={{ color: 'red',  marginTop: '20px' }} />
                 </IconButton> 
     
       <Dialog
