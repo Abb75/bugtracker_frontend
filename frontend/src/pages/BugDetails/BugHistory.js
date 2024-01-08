@@ -22,7 +22,7 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
     const bugProject = BugProject()
     const searchSelectedBug = bugProject?.filter(bug => bug.id === parseInt(bugId))
     const formatDataBugHistory = () => {
-    const historyBug = history?.data;
+    const historyBug = history?.status;
     const formatDataBug = historyBug
       ?.map(data => JSON.parse(data[0]?.replaceAll("\"", "&quot;")?.replaceAll("'", "\"")))
       .filter(Boolean); 
