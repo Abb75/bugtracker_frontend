@@ -50,7 +50,8 @@ export const Bugs = () => {
   const { error, loading } = bugProject || {};
   const [bugStates, setBugStates] = useState(bugProject);
   const projectData = ProjectDetailsData();
-  const userRole = projectData.invitation.filter(user => user.email === currentUser.email && user.role === 'admin');
+  const userRole = projectData.invitation.filter(user => user.email === currentUser.email &&
+                                                 user.role === 'admin');
   const IsGuestAdmin = userRole[0] ? userRole[0].role : null;
   const IsAdminUser = GetCurrentUser()
 
@@ -211,7 +212,7 @@ export const Bugs = () => {
               row.is_archived === false ? (
               <Fragment key={row.title}>
                 <TableRow>
-                { IsAdminUser === 'admin' ||
+                { currentUser.groups[0] === 'admin' ||
                   IsGuestAdmin === 'admin' ||
                   currentUser?.email === row.created_by || 
                   currentUser?.email === row.assigned_to_email ? 
@@ -236,7 +237,7 @@ export const Bugs = () => {
                   <TableCell>
                   {row.assigned_to_name}
                     {currentUser.id === row.assigned_to_id ||
-                    IsAdminUser.groups[0] === 'admin' ||
+                    currentUser.groups[0] === 'admin'||
                     IsGuestAdmin === 'admin' ?
                        (
                     <IconButton
@@ -268,8 +269,9 @@ export const Bugs = () => {
                   </TableCell>
                   <TableCell>
                     {row.status}
-                    { currentUser.id === row.assigned_to_id || IsAdminUser.groups[0] === 'admin' ||
-                    IsGuestAdmin === 'admin' ?
+                    { currentUser.id === row.assigned_to_id ||
+                      currentUser.groups[0] === 'admin' ||
+                      IsGuestAdmin === 'admin' ?
                        (
                     <IconButton 
 
@@ -303,8 +305,9 @@ export const Bugs = () => {
                   <TableCell>
                     
                     {row.priority}
-                    { currentUser.id === row.assigned_to_id || IsAdminUser.groups[0] === 'admin' ||
-                    IsGuestAdmin === 'admin' ?
+                    { currentUser.id === row.assigned_to_id ||
+                      currentUser.groups[0] === 'admin' ||
+                      IsGuestAdmin === 'admin' ?
                        (
               <IconButton
                     aria-label="priority"
@@ -338,8 +341,8 @@ export const Bugs = () => {
                     <Collapse in={openRows.includes(index)} timeout="auto" unmountOnExit>
                       <Box sx={{ margin: 1 }}>
                         <Typography variant="h6" gutterBottom component="div">
-                        {currentUser.groups[0] === 'admin' ||
-                         IsGuestAdmin === 'admin' ||
+                        {
+                          currentUser.groups[0] === 'admin' ||
                           currentUser?.email === row.created_by || 
                           currentUser?.email === row.assigned_to_email  ? (
                         <Button
