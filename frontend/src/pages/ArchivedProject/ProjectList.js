@@ -88,7 +88,7 @@ export const ArchivedProject = () => {
             <Grid marginLeft={'10px'} container justifyContent='space-between' alignItems="center">
               {/* Titre du projet, centré */}
               <Typography marginLeft={'50px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
-                {project.name}
+                <strong>{project.name}</strong>
               </Typography>
 
               {/* Icônes à droite du titre */}
@@ -119,7 +119,7 @@ export const ArchivedProject = () => {
 
             {/* Autres informations */}
             <Typography variant="body2" color="text.secondary">
-              Archivé le {project.date}
+            
             </Typography>
           </CardContent>
         </Card>

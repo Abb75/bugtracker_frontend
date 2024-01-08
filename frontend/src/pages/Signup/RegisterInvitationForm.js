@@ -113,7 +113,7 @@ export const RegisterInvitationForm= () => {
             variant="outlined"
             margin="normal"
             name="recipientEmail"
-            label="first_name"
+            label="First name"
             value={first_name}
             onChange={handleChange}
             required
@@ -125,7 +125,7 @@ export const RegisterInvitationForm= () => {
             variant="outlined"
             margin="normal"
             name="recipientEmail"
-            label="last_name"
+            label="Last name"
             value={last_name}
             onChange={handleChange}
             required
