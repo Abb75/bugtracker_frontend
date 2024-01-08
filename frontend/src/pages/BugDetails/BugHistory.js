@@ -26,8 +26,10 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
     const formatDataBug = historyBug
       ?.map(data => JSON.parse(data[0]?.replaceAll("\"", "&quot;")?.replaceAll("'", "\"")))
       .filter(Boolean); 
+     
   
     setFormatDataBug([formatDataBug]);
+     console.log(formatDataBug)
     }
   
   useEffect(() => {
