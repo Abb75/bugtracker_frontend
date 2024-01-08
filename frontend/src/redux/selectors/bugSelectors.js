@@ -13,7 +13,7 @@ export const Allbug= () => {
 };
 
 export const BugHistoryData = () => {
-  return useSelector(state => state.bugHistory.bugHistory[0]);
+  return useSelector(state => state.bugHistory.bugHistory);
 };
 
 export const BugCommentData= () => {
