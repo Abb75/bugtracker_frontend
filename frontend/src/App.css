@@ -1,26 +1,3 @@
-.login-page-background {
-  /* Ajoutez ici les styles pour l'image de fond de la page de connexion */
- 
-  background-color: white;
-  background-image: url('/src/assets/img/desk.png'); /* Chemin vers votre image */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -1;
- 
-  /* Autres styles nécessaires */
-}
-
-
-
 .App {
   text-align: center;
   min-height: 100vh;

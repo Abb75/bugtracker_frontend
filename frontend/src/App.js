@@ -38,15 +38,11 @@ function App() {
   const navigate = useNavigate()
   const tokenUser = GetTokenUser()
   const location = useLocation();
-  const showSidebar = location.pathname === '/' ||
+  const showLayout = location.pathname === '/' ||
                       location.pathname === '/login' ||
                       location.pathname === '/register'||
                       location.pathname === '/Register-invitation/:uuid'
-  const showNavbar =  location.pathname === '/' ||
-                      location.pathname === '/login' ||
-                      location.pathname === '/register'||
-                      location.pathname === '/Register-invitation/:uuid'
-  
+
 
   useEffect(() => {
     if(!tokenUser   && !location.pathname === '/Register-invitation/:uuid'
@@ -58,9 +54,10 @@ function App() {
    
     <div className='App'>
       <Toaster richColors/>
-     {!showSidebar ? <Sidebar/> : null }
-      {! showNavbar ? <NavBar/> : null} 
-    
+      {!showLayout ? <Fragment>
+                          <Sidebar/>
+                          <NavBar/> 
+                      </Fragment> : null }
      
         <Routes>
           <Route path='*' element={<ErrorPages/>}/> 

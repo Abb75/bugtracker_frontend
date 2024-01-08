@@ -19,9 +19,9 @@ import {  useNavigate } from "react-router-dom"
 import { LabelImportant} from '@mui/icons-material'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { GetUserApi } from '../../redux/actions/userActions';
-//import deskImage from '../../../public/img/desk.png'
+import deskImage from '../../assets/img/desk.png'
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
-import { SendErrorNotification, SendSuccessNotification } from '../../components/Alert';
+import { SendSuccessNotification } from '../../components/Alert';
 import '../../App.css';
 import { LoginApi } from '../../redux/actions/userActions';
 
@@ -38,7 +38,7 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme()
 
 export  const Login = () => {
 
@@ -61,7 +61,7 @@ export  const Login = () => {
         //setIsAuthenticated(true)
 
     }catch(error){
-      throw error
+      console.log(error)
   }
   }
 
@@ -91,10 +91,9 @@ export  const Login = () => {
  
 
 const userLoginDemoInfo = {
-  //'Admin': { email: 'demoadmin@example.com', password: 'passwordadmin1' },
   'Admin': { email: 'demoadmin@example.com', password: 'passwordadmin1' },
-  'Developer': { email: 'demodeveloper@example.com', password: 'passworddev1' },
-  'Submitter': { email: 'demosubmitter@example.com', password: 'passwordsub1' }
+  'Developer': { email: 'demodeveloper@example.com', password: 'passworddeveloper1' },
+  'Submitter': { email: 'demosubmitter@example.com', password: 'passwordsubmitter1' }
 };
 
 const handleSubmitLoginDemo = async (user) => {
@@ -105,12 +104,11 @@ const handleSubmitLoginDemo = async (user) => {
       ///await dispatchUserData()  
       setIsAuthenticated(true);
      
-      SendSuccessNotification('Login with success !')
+      SendSuccessNotification('Login with success')
     } else {
       console.log('Utilisateur non valide');
     }
   } catch (error) {
-    SendErrorNotification('Login failed !')
     console.log('Erreur lors de la connexion de démonstration :', error);
   }
 };
@@ -127,31 +125,47 @@ useEffect(() => {
 
 return (
   
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" >
-        <CssBaseline />
-        <Box className='login-page-background'
-         
-        />
-        <Box
-          sx={{
-            backgroundColor: 'rgba(255, 255, 255, 1)',
-            padding: '20px',
-            borderRadius: '8px',
-            boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.2)',
-            width: '100%',
-            marginTop: '80px',
-            textAlign: 'center',
-            position: 'relative',
-
-            zIndex: 1,
+    <ThemeProvider   theme={theme}>
+      <Box 
+           sx={{
+            backgroundImage: `url(${deskImage})`,
+            backgroundSize: 'cover',
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-        >
+       //className='login-page-background'
+        
+        
+      />
+      <Container  
+          component="main" maxWidth="xs" >
+        <CssBaseline />
+        
+        <Box
+
+    sx={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: 'rgba(255, 255, 255, 1)',
+      padding: '20px',
+      borderRadius: '8px',
+      boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.2)',
+      width: '100%',
+      maxWidth: '400px',
+      textAlign: 'center',
+      zIndex: 1,
+    }}
+
+>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Se connecter!
+            Se connecter
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -188,10 +202,7 @@ return (
               )
             }
 
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Se souvenir de moi"
-            />
+          
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Connexion
             </Button>
@@ -222,12 +233,12 @@ return (
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Mot de passe oublié ?
+                Forgot your password?
                 </Link>
               </Grid>
               <Grid item>
                 <Link to={'/register'} variant="body2">
-                  {"Vous n'avez pas de compte ? Inscrivez-vous"}
+                  {"Don't have an account? Sign up"}
                 </Link>
               </Grid>
             </Grid>
