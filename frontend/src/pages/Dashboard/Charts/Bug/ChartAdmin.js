@@ -24,15 +24,20 @@ export const ChartAdmin = () => {
   const projet = ListProjectByUser()
  
   projet?.forEach((project) => {
-     
-      const countBug = allBug?.filter(bug => bug.project === project.name &&
-                                             bug.is_archived === false) 
-      datadict.push({
-        name: project.name,
-        Developers: project.invitation.length,
-        Tickets: countBug?.length,
 
-      })
+      if (!project.is_archived){
+            const countBug = allBug?.filter(bug => bug.project === project.name &&
+                                             bug.is_archived === false) 
+            datadict.push({
+            name: project.name,
+            Developers: project.invitation.length,
+            Tickets: countBug?.length || 0,
+
+          })
+
+      }
+     
+      
   
     })
 
