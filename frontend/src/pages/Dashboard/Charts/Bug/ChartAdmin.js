@@ -22,11 +22,11 @@ export const ChartAdmin = () => {
   const datadict = []
   const allBug = Allbug()
   const projet = ListProjectByUser()
-  console.log(projet)
  
   projet?.forEach((project) => {
-      console.log(allBug)
-      const countBug = allBug?.filter(bug => bug.project === project.name && bug.is_archived === false) 
+     
+      const countBug = allBug?.filter(bug => bug.project === project.name &&
+                                             bug.is_archived === false) 
       datadict.push({
         name: project.name,
         Developers: project.invitation.length,
@@ -75,7 +75,7 @@ export const ChartAdmin = () => {
           }}
         >
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis type="number" />
+          <XAxis type="number" allowDecimals={false} />
           <YAxis dataKey="name" type="category" scale="band" />
           <Tooltip /> 
           <Legend />
