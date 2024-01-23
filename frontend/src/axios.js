@@ -29,7 +29,7 @@ export function isTokenExpired(token) {
 
 const axiosInstance = axios.create({
     baseUrl: baseUrl,
-    timeout: 10000,
+    timeout: 15000,
     headers: {
         Authorization: localStorage.getItem('access_token')
         ? 'JWT' + localStorage.getItem('access_token')
