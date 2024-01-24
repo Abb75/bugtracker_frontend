@@ -116,11 +116,11 @@ export const BugComment = () => {
 
 return (
 
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
 
       
 
-      <Box display="flex" justifyContent="space-between" marginTop="5px" marginBottom="10px"  marginLeft='-23px' width={'140%'}>
+      <Box display="flex" justifyContent="space-between" marginTop="5px" marginBottom="10px"  marginLeft='-23px' width={'200%'}>
       <Card ref={divRef} elevation={2} style={{ width: '65%', height:'74%',overflowY: 'auto' }}>
           <CardContent>
             <Typography style={{marginBottom: '40px'}} variant="h5" gutterBottom>
