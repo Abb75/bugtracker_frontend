@@ -36,7 +36,7 @@ export const ProjectDetailsPage = () => {
    
       return (
        
-        <Container className="ProjectContainer" style={{height: 'auto'}}  >
+        <Container id="ProjectContainer" style={{height: 'auto'}}  >
     <Grid marginTop={'50px'} marginBottom={'10px'} container spacing={1}  >
         <Grid  item>
           <ButtonAddBug />

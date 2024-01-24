@@ -27,6 +27,8 @@ import {ChartAdmin}  from './Charts/Bug/ChartAdmin';
 import { ChartDeveloper } from './Charts/Bug/ChartDeveloper';
 
 export const Dashboard = () => { 
+    console.log("Nouvelle largeur de l'écran : " + window.innerWidth);
+    console.log("Nouvelle hauteur de l'écran : " + window.innerHeight);
     const dispatch = useDispatch()
     //const tokenUser = localStorage.getItem('access_token');
     const tokenUser = GetTokenUser()  
@@ -59,7 +61,6 @@ export const Dashboard = () => {
         if (!tokenUser || isTokenExpired(tokenUser)){
             navigate('/login')}
         else{
-            console.log('DASHBORRRRRRRRRR')
              dispatchProjectData()
           
         }
@@ -69,9 +70,10 @@ export const Dashboard = () => {
   
     
     return (
+
         <Fragment>
-          <Container className='DashboardContainer' style={{marginBottom: '100px'}}>
-             <h1 style={{fontFamily: 'inherit'}} >Dashboard</h1>
+          <Container id='dashboardcontainer' className='DashboardContainer' style={{marginBottom: '100px'}}>
+             <h1 id='name' style={{fontFamily: 'inherit'}} >Dashboard</h1>
          
               <Container style={{ marginTop: '-200px', maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }}>
                     <Grid container spacing={0}  >
@@ -83,7 +85,7 @@ export const Dashboard = () => {
 
             <Container style={{  display: 'flex', marginTop: '200px' }}>
         <Grid container spacing={0} alignItems={'center'} justifyContent={'center'}>
-            {shouldDisplayComponents && (
+
                 <Fragment>
                     <Grid item xs={12} sm={6} md={4}>
                         <BoxCountProject />
@@ -95,7 +97,7 @@ export const Dashboard = () => {
                         <BoxCountTicketsCritical />
                     </Grid>
                 </Fragment>
-            )}
+          ²
         </Grid>
     </Container>
              
@@ -119,7 +121,7 @@ export const Dashboard = () => {
                 <Grid item  xs={12} sm={6} md={4}>
                     <Paper elevation={3} style={{ padding: '10px', height: '500px', width: '100%', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
                     <Typography variant="h5" style={{ fontFamily: 'inherit', fontWeight: 'bold',position: 'absolute', textAlign:'center', top:'40px' }}>
-                           Ticket Priority!
+                           Ticket Priority
                         </Typography>
                         <BugChartPriority style={{ flex: 1, margin: '5px' }} />
                     </Paper>

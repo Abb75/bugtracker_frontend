@@ -11,7 +11,7 @@ import DeleteGuestUserDialog from '../../components/dialog/DeleteGuestUser';
 import { GetUserProjectApi } from '../../redux/actions/projectActions';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 // Exemple de données de projets et d'utilisateurs invités
-
+import './Guests.css'
 
 export const GuestsUser = () => {
 

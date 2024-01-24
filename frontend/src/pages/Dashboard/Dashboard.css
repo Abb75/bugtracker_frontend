@@ -1,7 +1,9 @@
-@media (width: 700px) {
-    /* Réduisez la marge de gauche et augmentez la marge de droite pour décaler vers la droite */
-    .DashboardContainer {
-      margin-left: 100px;
-      margin-right: 80px; /* Ajustez la valeur de votre décalage */
-    }
+@media screen and (max-width:1800px) {
+  /* Augmentez la marge de gauche et réduisez la marge de droite pour décaler vers la droite */
+  #dashboardcontainer {
+    /* Ajustez la valeur de votre décalage vers la gauche */
+    margin-bottom: 100px;
+    margin-right: 90px; /* Ajustez la valeur de votre décalage vers la droite */
   }
+ 
+}
