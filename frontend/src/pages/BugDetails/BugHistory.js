@@ -27,7 +27,7 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
   
     setFormatDataBug([formatDataBug]);
   }
-  console.log(formatDataBug)
+  console.log(formatDataBug, '????????????')
   useEffect(() => {
     try{
        dispatch(selectedBug(searchSelectedBug));
