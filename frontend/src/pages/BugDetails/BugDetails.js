@@ -14,11 +14,12 @@ import { GetBugProjectApi } from "../../redux/actions/bugActions"
 import { AddBugCommentApi } from "../../redux/actions/bugActions";
 import { GetCurrentUser } from "../../redux/selectors/userSelectors";
 import { BugDescription } from "./BugDescription";
+import './BugDetails.css'
 
 export const BugDetails = () => { 
 
       return (
-        <Container maxWidth="lg">
+        <Container id='BugDetails' maxWidth="lg">
           
             <BugDescription/>
             <Box display="flex" justifyContent="space-between" marginTop="20px" marginBottom="20px">
