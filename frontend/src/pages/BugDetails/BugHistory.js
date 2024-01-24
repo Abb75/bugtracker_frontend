@@ -11,7 +11,6 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
  export const BugHistory = () => {
 
     const [formatDataBug, setFormatDataBug] = useState([])
-    //const tokenUser = localStorage.getItem('access_token')
     const tokenUser = GetTokenUser()  
 
     const history = BugHistoryData()
