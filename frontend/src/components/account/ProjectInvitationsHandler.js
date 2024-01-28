@@ -60,7 +60,7 @@ useEffect(() => {
 
 
   return (
-    <Container>
+    <Container id='InvitationHandler'>
         {currentUser.groups[0] === 'admin' ? (
       <Typography variant="h4" gutterBottom>
                 ​Invitation management
