@@ -203,7 +203,7 @@ useEffect(() => {
                   required
                   fullWidth
                   name="password2"
-                  label="Password2"
+                  label="Password confirm"
                   type="password"
                   id="password2"
                   autoComplete="new-password"

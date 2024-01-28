@@ -193,7 +193,6 @@ export const logout = (tokenUser) => async(dispatch) => {
 
 
 export const LoginApi = (email, password) => async(dispatch) => {
- console.log('LOLOLO')
 
     try{
       dispatch({type: TOKEN_USER_REQUEST})
