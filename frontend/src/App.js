@@ -31,7 +31,7 @@ import { UserPassword } from './components/account/UpdatePassword';
 import { GetTokenUser } from './redux/selectors/userSelectors';
 import Example, { NewChart } from './pages/Dashboard/Charts/Bug/ChartAdmin';
 import { HashRouter } from 'react-router-dom';
-
+import RegistrationCongratulations from './pages/Signup/SuccessRegistration';
 
 function App() {
   //const value = useContext(UserContext)
@@ -78,6 +78,7 @@ function App() {
           <Route path='/project/:id/invitation' element={<InvitationForm />} />
           <Route path='/invitation' element={<HandlerInvitationsPage />} />
           <Route path='/Register-invitation/:uuid/' element={<RegisterInvitationForm />} />
+          <Route path='/success-register' element={<RegistrationCongratulations />} />
         </Routes>
     </div>
 
