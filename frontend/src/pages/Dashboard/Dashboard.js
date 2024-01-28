@@ -97,7 +97,7 @@ export const Dashboard = () => {
                         <BoxCountTicketsCritical />
                     </Grid>
                 </Fragment>
-          ²
+          
         </Grid>
     </Container>
              
