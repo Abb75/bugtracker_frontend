@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/bugtracker_frontend/static/css/main.89a26607.css",
-    "main.js": "/bugtracker_frontend/static/js/main.d5ee13e8.js",
+    "main.js": "/bugtracker_frontend/static/js/main.d1b66ee1.js",
     "static/media/desk.png": "/bugtracker_frontend/static/media/desk.2a9d94ba5406dce4856d.png",
     "index.html": "/bugtracker_frontend/index.html",
     "main.89a26607.css.map": "/bugtracker_frontend/static/css/main.89a26607.css.map",
-    "main.d5ee13e8.js.map": "/bugtracker_frontend/static/js/main.d5ee13e8.js.map"
+    "main.d1b66ee1.js.map": "/bugtracker_frontend/static/js/main.d1b66ee1.js.map"
   },
   "entrypoints": [
     "static/css/main.89a26607.css",
-    "static/js/main.d5ee13e8.js"
+    "static/js/main.d1b66ee1.js"
   ]
 }
