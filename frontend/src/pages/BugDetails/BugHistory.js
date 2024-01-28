@@ -27,7 +27,6 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
   
     setFormatDataBug([formatDataBug]);
   }
-  cone.log(history)
   useEffect(() => {
     try{
        dispatch(selectedBug(searchSelectedBug));
