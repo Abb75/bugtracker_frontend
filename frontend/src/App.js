@@ -78,7 +78,7 @@ function App() {
           <Route path='/project/:id/invitation' element={<InvitationForm />} />
           <Route path='/invitation' element={<HandlerInvitationsPage />} />
           <Route path='/Register-invitation/:uuid/' element={<RegisterInvitationForm />} />
-          <Route path='/success-register' element={<RegistrationCongratulations />} />
+          <Route path='/success-register/:id/' element={<RegistrationCongratulations />} />
         </Routes>
     </div>
 
