@@ -18,7 +18,7 @@ const RegistrationCongratulations = () => {
       };
 
       // Utilisation de la méthode axios.post correctement
-      await axios.post(`${process.env.REACT_APP_API_URL}/register-confirm/${id}/`, { is_active: true }, config);
+      await axios.patch(`${process.env.REACT_APP_API_URL}/register-confirm/${id}/`, { is_active: true }, config);
 
       // Redirection vers la page de connexion après la confirmation
       navigate('/login');
