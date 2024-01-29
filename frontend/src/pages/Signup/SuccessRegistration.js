@@ -17,7 +17,7 @@ const RegistrationCongratulations = () => {
       };
 
     
-      await axios.patch(`${process.env.REACT_APP_API_URL}/register-confirm/${id}/`, { is_active: true }, config);
+      await axios.patch(`${process.env.REACT_APP_API_URL}register-confirm/${id}/`, { is_active: true }, config);
 
      
     } catch (error) {
