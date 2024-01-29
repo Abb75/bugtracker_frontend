@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'; // Assurez-vous d'importer axios
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationCongratulations = () => {
-  const navigate = Navigate()
+  const navigate = useNavigate()
   const { id } = useParams();
 
   const sendConfirmRegistration = async () => {
