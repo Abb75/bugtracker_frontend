@@ -342,6 +342,7 @@ export const Bugs = () => {
                       <Box sx={{ margin: 1 }}>
                         <Typography variant="h6" gutterBottom component="div">
                         {
+                          IsGuestAdmin === 'admin' ||
                           currentUser.groups[0] === 'admin' ||
                           currentUser?.email === row.created_by || 
                           currentUser?.email === row.assigned_to_email  ? (
