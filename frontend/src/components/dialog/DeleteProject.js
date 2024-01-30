@@ -8,7 +8,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteProjectById } from '../../redux/actions/projectActions';
-import { ErrorOutline, Token } from '@mui/icons-material';
 import { SendSuccessNotification } from '../Alert';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 

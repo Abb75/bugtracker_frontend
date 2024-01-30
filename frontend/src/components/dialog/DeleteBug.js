@@ -5,15 +5,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteProjectById } from '../../redux/actions/projectActions';
-import { ErrorOutline, Token } from '@mui/icons-material';
 import { SendSuccessNotification } from '../Alert';
 import Delete from '@mui/icons-material/Delete';
 import { DeleteBugApi, GetBugArchivedApi, GetBugProjectApi } from '../../redux/actions/bugActions';
 import { useDispatch } from 'react-redux';
-import { GetBugArchived } from '../../redux/selectors/bugSelectors';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export default function DeleteBugDialog({bug, project}) {
@@ -63,7 +58,7 @@ const tokenUser = GetTokenUser()
             fontSize: '16px',
             }}
         > 
-                Delete
+              
             
         </Button>
 
