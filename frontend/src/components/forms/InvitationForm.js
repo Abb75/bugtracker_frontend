@@ -13,7 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { PostInvitationApi } from '../../redux/actions/invitationActions';
 import { useDispatch } from 'react-redux';
 //import { tokenUser } from '../../hooks/useLocalStorage';
-import { SendSuccessNotification } from '../Alert';
+import { SendErrorNotification, SendSuccessNotification } from '../Alert';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
 
 const InvitationForm = () => {
@@ -51,13 +51,13 @@ const InvitationForm = () => {
   };
   
   
-  const sendInvitation = () => {
+  const sendInvitation = async() => {
     try {
-      dispatch(PostInvitationApi(id, formData, tokenUser))
-     
+      await dispatch(PostInvitationApi(id, formData, tokenUser))
+      SendSuccessNotification('Invitation send with success')
     }
     catch(error){
-      console.log(error)
+      SendErrorNotification('invitation send failed')
     }
   }
 

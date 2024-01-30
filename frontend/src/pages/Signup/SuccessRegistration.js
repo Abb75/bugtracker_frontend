@@ -33,6 +33,7 @@ const RegistrationCongratulations = () => {
     <div>
       <h1>Félicitations !!!</h1>
       <p>Votre inscription est confirmée.</p>
+      <p>Consultez votre boîte mail pour la confirmation de l'inscription.</p>
       <p>Vous pouvez maintenant vous connecter en utilisant le lien ci-dessous :</p>
       <Link  to="/login">Page de connexion</Link>
     </div>
