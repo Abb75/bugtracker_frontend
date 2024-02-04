@@ -79,7 +79,7 @@ export const ArchivedProject = () => {
    
       <Container maxWidth="md" sx={{ mt: 5 }}>
       <Typography variant="h4" sx={{ mb: 3 }}>
-        Archived project(s)ssss
+        Archived project(s)
       </Typography>
 
       {projects?.map((project) => (

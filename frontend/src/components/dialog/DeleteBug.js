@@ -57,10 +57,8 @@ const tokenUser = GetTokenUser()
             padding: '10px 20px',
             fontSize: '16px',
             }}
-        > 
-              
             
-        </Button>
+        >Delete</Button>
 
     
       <Dialog
