@@ -4,16 +4,12 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { AddInvitationApi, PostCreateGuestUserApi } from '../../redux/actions/userActions';
+
+import { useNavigate, useParams } from 'react-router-dom';
+import {  PostCreateGuestUserApi } from '../../../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
-import { SendSuccessNotification } from '../../components/Alert';
-import { GetTokenUser } from '../../redux/selectors/userSelectors';
+import { SendSuccessNotification } from '../../../components/Alert';
+import { GetTokenUser } from '../../../redux/selectors/userSelectors';
 
 export const RegisterInvitationForm= () => {
    
@@ -60,7 +56,7 @@ export const RegisterInvitationForm= () => {
       navigate('https://abb75.github.io/bugtracker_frontend/#/login')
     }
     catch(error){
-      console.log(error)
+      throw error
     }
   }
 

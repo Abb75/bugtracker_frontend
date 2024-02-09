@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'; // Assurez-vous d'importer axios
-import { useNavigate } from 'react-router-dom';
 
 const RegistrationCongratulations = () => {
   const { id } = useParams();
@@ -20,7 +19,7 @@ const RegistrationCongratulations = () => {
 
      
     } catch (error) {
-      console.error('Erreur lors de la confirmation d\'inscription :', error);
+      throw error
     }
   };
 

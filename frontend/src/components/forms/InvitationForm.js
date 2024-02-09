@@ -12,7 +12,6 @@ import InputLabel from '@mui/material/InputLabel';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PostInvitationApi } from '../../redux/actions/invitationActions';
 import { useDispatch } from 'react-redux';
-//import { tokenUser } from '../../hooks/useLocalStorage';
 import { SendErrorNotification, SendSuccessNotification } from '../Alert';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
 
@@ -31,7 +30,6 @@ const InvitationForm = () => {
    
 
   }
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const [formData, setFormData] = useState(initialFormData)
   const {name, email, role } = formData

@@ -10,11 +10,9 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import { Allbug, BugProject } from "../../../../redux/selectors/bugSelectors";
+import { Allbug } from "../../../../redux/selectors/bugSelectors";
 import { ListProjectByUser } from "../../../../redux/selectors/projectSelectors";
-import { all } from 'axios';
 import { Grid, Container, Paper, Typography } from '@mui/material';
-import { GetCurrentUser } from '../../../../redux/selectors/userSelectors';
 
 
 

@@ -1,16 +1,11 @@
 import { Fragment, useEffect, useState } from 'react';
-import { useTheme } from '@mui/material/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import { Paper, Box, Typography, Divider, DescriptionTypography, IconButton, Popover, MenuItem, Container, useMediaQuery} from '@mui/material';
+import { Paper, Box, Typography, Divider, IconButton, Popover, MenuItem , useMediaQuery} from '@mui/material';
 import { styled } from '@mui/system';
-import { ProjectDetailsPage } from '../ProjectDetails';
 import { CheckCircle, Error, Warning, Info, Help } from '@mui/icons-material';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Stack, Button } from '@mui/material';
+import {  useParams } from 'react-router-dom';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { ProjectDetailsData, SelectedProject } from '../../../redux/selectors/projectSelectors';
+
+import { ProjectDetailsData } from '../../../redux/selectors/projectSelectors';
 import { UpdateProjectApi } from '../../../redux/actions/projectActions';
 import { GetCurrentUser, GetTokenUser } from '../../../redux/selectors/userSelectors';
 

@@ -1,16 +1,10 @@
 import {useState, useEffect, Fragment}from 'react';
 import { Container } from '@mui/system';
-import { Box, ListSubheader, SliderValueLabel } from '@mui/material';
-import axios from 'axios';
+import { Box } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { json, useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom';
 import {Paper, Divider} from '@mui/material';
-// Generate Order Data
 import * as React from 'react';
-
-
 import {  Typography, List, ListItem,Grid, ListItemAvatar, Avatar, ListItemText, IconButton} from '@mui/material';
 import FolderIcon from '@mui/icons-material/Folder';
 import './ProjectList.css'
@@ -26,7 +20,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { SendSuccessNotification } from '../../components/Alert';
-
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
     
 
@@ -50,7 +43,6 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
       const navigate = useNavigate()
       const currentUser = GetCurrentUser()
       const listProjectUser = ListProjectByUser()
-      //const tokenUser = localStorage.getItem('access_token')
       const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
       const [anchorEl, setAnchorEl] = useState({});
        
@@ -78,7 +70,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
             SendSuccessNotification('Project archived with success')
             dispatch(GetUserProjectApi(tokenUser))
           }catch(error){
-            console.error(error)
+            throw error
           }
          
           handleClose();
@@ -100,14 +92,13 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
         await dispatch(GetProjectDetails(tokenUser, projectId ))
         navigate(`/project/${projectId}`)
       }catch(error){
-        console.error(error)
+        throw error
       }
     }
 
       const OnClick = (projectId) => {
            dispatchProjectDetails(projectId)
-          //sconst project = handleSelectedProject(projectId) 
-          //const userRole = project.invitation.filter(user => user.email === currentUser.email)  
+         
       }
 
     

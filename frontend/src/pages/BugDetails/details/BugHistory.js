@@ -1,12 +1,12 @@
-import { GetCurrentUser, GetTokenUser } from "../../redux/selectors/userSelectors"
+import { GetCurrentUser, GetTokenUser } from "../../../redux/selectors/userSelectors"
 import { useDispatch } from "react-redux"
-import { BugProject } from "../../redux/selectors/bugSelectors"
+import { BugProject } from "../../../redux/selectors/bugSelectors"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { selectedBug } from "../../redux/actions/bugActions"
-import { GetBugHistoryApi } from "../../redux/actions/bugActions"
+import { selectedBug } from "../../../redux/actions/bugActions"
+import { GetBugHistoryApi } from "../../../redux/actions/bugActions"
 import { Container, Card, CardContent, Typography, Grid, Box } from "@mui/material"
-import { BugHistoryData } from "../../redux/selectors/bugSelectors"
+import { BugHistoryData } from "../../../redux/selectors/bugSelectors"
 
  export const BugHistory = () => {
 
@@ -14,7 +14,6 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
     const tokenUser = GetTokenUser()  
 
     const history = BugHistoryData()
-    const currentUser = GetCurrentUser()
     const dispatch = useDispatch() 
     const {projectId, bugId} = useParams()
     const bugProject = BugProject()
@@ -33,7 +32,7 @@ import { BugHistoryData } from "../../redux/selectors/bugSelectors"
        dispatch(GetBugHistoryApi(projectId, bugId, tokenUser));
     }
     catch(error){
-      console.error(error)
+      throw error
     }
    
   }, [projectId, bugId]);

@@ -45,7 +45,6 @@ export const ChartAdmin = () => {
     const [activeBar, setActiveBar] = useState(null);
 
     const handleBarMouseOver = (data) => {
-      console.log(data)
       setActiveBar(data);
     };
   

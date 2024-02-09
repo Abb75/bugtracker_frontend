@@ -1,24 +1,20 @@
 import './App.css';
-import { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import {Login} from './pages/Login/Login';
-import SignUp from './pages/Signup/Register';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import {Login} from './pages/auth/Login/Login';
+import SignUp from './pages/auth/Signup/Register';
 import { Dashboard } from './pages/Dashboard/Dashboard';
-import { Footer } from './layout/Footer/footer';
-import Project, { ProjectForm } from './components/forms/ProjectForm';
+import { ProjectForm } from './components/forms/ProjectForm';
 import {Sidebar}  from './layout/SideBar/sideBar';
 import { ProjectDetailsPage } from './pages/ProjectDetails/ProjectDetails';
 import { BugForm } from './components/forms/BugForm';
 import { ProjectList } from './pages/ProjectList/ProjectList';
 import { NavBar } from './layout/Navbar';
 import BugTrackerPage from './pages/Home/Home'
-//import UserContext from './context/UserContext/user';
 import { Fragment, useEffect } from 'react';
-import { isTokenExpired } from './axios';
 import { useNavigate } from 'react-router-dom';
 import InvitationForm from './components/forms/InvitationForm';
-import { RegisterInvitationForm } from './pages/Signup/RegisterInvitationForm';
+import { RegisterInvitationForm } from './pages/auth/Signup/RegisterInvitationForm';
 import { BugDetails } from './pages/BugDetails/BugDetails';
 import { ArchivedProject } from './pages/ArchivedProject/ProjectList';
 import { GuestsUser } from './pages/Guest/Guests';
@@ -31,7 +27,7 @@ import { UserPassword } from './components/account/UpdatePassword';
 import { GetTokenUser } from './redux/selectors/userSelectors';
 import Example, { NewChart } from './pages/Dashboard/Charts/Bug/ChartAdmin';
 import { HashRouter } from 'react-router-dom';
-import RegistrationCongratulations from './pages/Signup/SuccessRegistration';
+import RegistrationCongratulations from './pages/auth/Signup/SuccessRegistration';
 
 function App() {
   //const value = useContext(UserContext)

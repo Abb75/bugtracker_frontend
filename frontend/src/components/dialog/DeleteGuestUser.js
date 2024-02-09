@@ -14,7 +14,6 @@ import { useDispatch } from 'react-redux';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export default function DeleteGuestUserDialog({project, user }) {
-  //const  tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const dispatch = useDispatch()
   const [open, setOpen] = React.useState(false);
@@ -38,9 +37,8 @@ export default function DeleteGuestUserDialog({project, user }) {
         SendSuccessNotification('User delete with success')
     }
     catch(error){
-        console.error(error)
-    }
-  }
+      throw error
+  }}
 
   return (
     <React.Fragment>

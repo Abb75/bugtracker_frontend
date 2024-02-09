@@ -1,7 +1,7 @@
 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { HandleLogout } from '../components/auth/Logout'
+import { HandleLogout } from '../pages/auth/Logout'
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 
 

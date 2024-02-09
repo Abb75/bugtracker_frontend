@@ -1,7 +1,7 @@
 import { Container, Paper, Typography } from '@mui/material';
 import { Allbug } from '../../../../redux/selectors/bugSelectors';
 import { ListProjectByUser } from '../../../../redux/selectors/projectSelectors';
-import React, { PureComponent, useState } from 'react';
+import React from 'react';
 import {
   ComposedChart,
   Line,
@@ -22,14 +22,11 @@ export const ChartDeveloper = () => {
   const datadict = []
   const allBug = Allbug()
   const projet = ListProjectByUser()
-  console.log(projet)
  
   projet?.forEach((project) => {
-      console.log(allBug)
       const countBug = allBug?.filter(bug => bug.project === project.name && bug.is_archived === false) 
       datadict.push({
         name: project.name,
-        //Developers: project.invitation.length,
         Tickets: countBug?.length,
 
       })

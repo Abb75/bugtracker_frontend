@@ -1,7 +1,6 @@
 import { Paper, Typography, Box } from '@mui/material';
 import { styled } from '@mui/system';
-import { Fragment, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { Fragment } from 'react';
 import { BugProject } from '../../../redux/selectors/bugSelectors';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Card, CardContent, Button, Link } from '@mui/material'; // Importer les composants Material-UI nécessaires
+import { Typography, Grid, Button, Link } from '@mui/material'; // Importer les composants Material-UI nécessaires
 
 const Header = () => {
   return (

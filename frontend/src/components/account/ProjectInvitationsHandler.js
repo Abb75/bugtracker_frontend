@@ -9,7 +9,6 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export const HandlerInvitationsPage = () => {
   const dispatch = useDispatch() 
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const currentUser = GetCurrentUser()
   const invitations = GetInvitationGuestUser()
@@ -24,17 +23,7 @@ export const HandlerInvitationsPage = () => {
     }
 }
 
-/*
-const handleDeleteInvitation = async(invitation, project) => {
- 
-  try{
-      await DeleteGuestUserInvitationProjectApi( project, invitation, tokenUser  )
-      dispatch(GetInvitationUser(tokenUser))
-  }catch(error){
-      console.error(error)
-  }
-}
-*/
+
 
 const handleDeleteInvitation = async(invitation, project) => {
  

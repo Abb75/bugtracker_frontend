@@ -7,20 +7,15 @@ import { ArchivedProjectData } from '../../redux/selectors/projectSelectors';
 import { useDispatch } from 'react-redux';
 import { UpdateProjectArchivedApi } from '../../redux/actions/projectActions';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { SendSuccessNotification } from '../../components/Alert';
-import ModalConfirmation from '../../components/dialog/DeleteProject';
-import AlertDialog from '../../components/dialog/DeleteProject';
 import DeleteProjectDialog from '../../components/dialog/DeleteProject';
-import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
+import {GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export const ArchivedProject = () => {
   const tokenUser = GetTokenUser()  
   const dispatch = useDispatch()
-  //const tokenUser = localStorage.getItem('access_token')
   const [projects, setProjects] = useState([])
   const archivedProjects = ArchivedProjectData()
-  console.log(archivedProjects)
   const [anchorEl, setAnchorEl] = useState({});
 
      
@@ -49,7 +44,7 @@ export const ArchivedProject = () => {
       SendSuccessNotification('Project unarchived with success')
       dispatch(GetProjectArchivedApi(tokenUser))
     }catch(error){
-      console.error(error)
+      throw error
     }
    
     handleClose();
@@ -63,7 +58,7 @@ export const ArchivedProject = () => {
 
     }
     catch(error){
-      console.error(error)
+      throw error
     }
   }, [tokenUser] )
 

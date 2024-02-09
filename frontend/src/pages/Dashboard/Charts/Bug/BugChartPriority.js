@@ -23,7 +23,6 @@ const BugChartPriority= () => {
             }
            
           }); 
-          console.log(priorityCount)
           return priorityCount;
           }
    
@@ -31,7 +30,6 @@ const BugChartPriority= () => {
   
 
   const bugs = Allbug()
-  console.log(bugs)
   const priorityCount = countPriority(bugs);
   const data = {
       labels: ['Critical', 'High', 'Normal', 'Low'],

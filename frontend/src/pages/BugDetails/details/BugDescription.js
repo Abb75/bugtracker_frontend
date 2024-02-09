@@ -1,5 +1,5 @@
 
-import { BugProject } from "../../redux/selectors/bugSelectors"
+import { BugProject } from "../../../redux/selectors/bugSelectors"
 import { useParams } from "react-router-dom"
 import { Container, Card, CardContent, Typography, Grid,  } from "@mui/material"
 

@@ -1,17 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-import { Box,Card,CardContent,Grid,Avatar, Container, Paper , Typography, TextField, styled, IconButton} from "@mui/material"
+import { Box,Card,CardContent,Grid,Avatar, Container , Typography, TextField, IconButton} from "@mui/material"
 import SendIcon from "@mui/icons-material/Send";
 import { json, useParams } from "react-router-dom"
-import { DeleteBugCommentApi, GetBugCommentsApi, GetBugHistoryApi, PostBugCommentApi, selectedBug } from "../../redux/actions/bugActions"
+import { DeleteBugCommentApi, GetBugCommentsApi, PostBugCommentApi } from "../../../redux/actions/bugActions"
 import { useDispatch } from "react-redux"
-import { Allbug, BugProject } from "../../redux/selectors/bugSelectors"
+import { Allbug, BugProject } from "../../../redux/selectors/bugSelectors"
 import { all } from "axios"
-import { BugHistory } from "../../redux/selectors/bugSelectors"
+import { BugHistory } from "../../../redux/selectors/bugSelectors"
 import { Clear, ReplayCircleFilled } from "@mui/icons-material"
-import { GetBugProjectApi } from "../../redux/actions/bugActions"
-import { GetBugCommentApi } from "../../redux/actions/bugActions";
-import { GetCurrentUser, GetTokenUser } from "../../redux/selectors/userSelectors";
-import { BugCommentData } from "../../redux/selectors/bugSelectors";
+import { GetBugProjectApi } from "../../../redux/actions/bugActions"
+import { GetBugCommentApi } from "../../../redux/actions/bugActions";
+import { GetCurrentUser, GetTokenUser } from "../../../redux/selectors/userSelectors";
+import { BugCommentData } from "../../../redux/selectors/bugSelectors";
 import ClearIcon from '@mui/icons-material/Clear';
 
 // ...
@@ -25,7 +25,6 @@ export const BugComment = () => {
 
     const formattedDate = new Date().toISOString().split('T')[0];
     const currentUser = GetCurrentUser()
-    //const tokenUser = localStorage.getItem('access_token')
     const tokenUser = GetTokenUser()  
 
     const dispatch = useDispatch()
@@ -66,21 +65,19 @@ export const BugComment = () => {
 
          }
          catch(error){
-          console.error(error)
+          throw error
          }
       }
 
       const createComment = async(formData) => {
-        console.log(formData)
         try {
            await PostBugCommentApi(projectId, bugId, formData, tokenUser  )
            await dispatch(GetBugCommentsApi(projectId, bugId, tokenUser));
-           // Remplacez "comments-container" par l'ID ou la référence de votre conteneur de commentaires
          
            divRef.current && scrollToBottom();
         }
         catch(error){
-          console.error(error)
+          throw error
         }
         setDescription('')
       }
@@ -91,7 +88,7 @@ export const BugComment = () => {
       
       const handleCommentSubmit = async (e) => {
         e.preventDefault();
-        console.log(description);
+        
       
        
         const updatedFormData = {
@@ -103,7 +100,6 @@ export const BugComment = () => {
       }
       
       const handleCommentChange = (e) => {
-        console.log(e.target.value)
         setDescription(e.target.value);
         
       

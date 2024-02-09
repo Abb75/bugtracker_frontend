@@ -1,9 +1,6 @@
-
-
 import { ListItemButton, ListItemIcon } from "@mui/material";
 import { Link } from "react-router-dom";
 import colorConfigs from "../../components/configs/colorConfigs";
-//import { RouteType } from "./routes/config";
 
 
 const SidebarItem = ({ item }) => {

@@ -11,7 +11,6 @@ import {
 } from "recharts";
 import { Allbug, BugProject } from "../../../../redux/selectors/bugSelectors";
 import { ListProjectByUser } from "../../../../redux/selectors/projectSelectors";
-import { all } from 'axios';
 import { Grid, Container, Paper, Typography } from '@mui/material';
 import { GetCurrentUser } from '../../../../redux/selectors/userSelectors';
 
@@ -25,7 +24,6 @@ export const BugChartDeveloper = () => {
   projet?.forEach((project) => {
    
       const countBug = allBug?.filter(bug => bug.project === project.name) 
-      console.log(countBug)
       const bugUser = allBug?.filter(bug => bug.assigned_to_email == currentUser.email )
       datadict.push({
         name: project.name,

@@ -1,8 +1,6 @@
 import React from 'react';
-import Badge from '@mui/material/Badge';
 import { Typography, Box, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { Padding } from '@mui/icons-material';
 
 export const BoxCountProject = () => {
 

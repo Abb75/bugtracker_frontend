@@ -17,8 +17,7 @@ import { json } from 'react-router-dom';
 import { Autocomplete, DialogContentText , } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Email } from '@mui/icons-material';
-import { checkPassword } from '../../utils/checkPassword';
-import { SendSuccessNotification } from '../../components/Alert';
+import { SendSuccessNotification } from '../../../components/Alert';
 
 
 function Copyright(props) {
@@ -58,7 +57,6 @@ export default function SignUp() {
 
 
   const submitData = async() => {
-    console.log(email, first_name, last_name, phone, password)
     try{
       await axios.post(process.env.REACT_APP_API_URL + 'users/' , {
           email : email,
@@ -74,11 +72,7 @@ export default function SignUp() {
       SendSuccessNotification('Register success !')
       navigate('/login')
     } catch (error) {
-      console.error(error)
-      console.log(error.response.data)
-      const data_error = error.response.data
       const new_errors = Object.values(error.response.data)
-      console.log(new_errors);
       setInputError(new_errors);
      
     }
@@ -102,7 +96,6 @@ export default function SignUp() {
     formData.password1 = event.target[8].value
     formData.password2 = event.target[10].value
     formData.phoneNumber = event.target[6].value
-    //checkValidation( password1, password2)
     submitData()
     };
 

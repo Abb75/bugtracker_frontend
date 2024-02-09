@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -12,31 +10,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios';
-import axiosInstance from '../../axios';
 import {  useNavigate } from "react-router-dom"
-//import { LoginDemoApi } from '../../api/test';
-import { LabelImportant} from '@mui/icons-material'; 
-import { useDispatch, useSelector } from 'react-redux';
-import { GetUserApi } from '../../redux/actions/userActions';
-import deskImage from '../../assets/img/desk.png'
-import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
-import { SendSuccessNotification } from '../../components/Alert';
-import '../../App.css';
-import { LoginApi } from '../../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
+import deskImage from '../../../assets/img/desk.png';
+import { SendSuccessNotification } from '../../../components/Alert';
+import { LoginApi } from '../../../redux/actions/userActions';
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme()
 
@@ -58,10 +37,9 @@ export  const Login = () => {
     try{ 
      
         await dispatch(LoginApi(email, password)) 
-        //setIsAuthenticated(true)
 
     }catch(error){
-      console.log(error)
+      throw error
   }
   }
 

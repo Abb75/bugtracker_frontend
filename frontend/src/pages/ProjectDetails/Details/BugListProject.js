@@ -43,7 +43,6 @@ export const Bugs = () => {
   const [assigneeMenuIndexId, setAssigneeMenuIndexId] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
-  //const tokenUser = localStorage.getItem('access_token');
   const tokenUser = GetTokenUser()  
 
   const bugProject = BugProject();
@@ -53,7 +52,6 @@ export const Bugs = () => {
   const userRole = projectData.invitation.filter(user => user.email === currentUser.email &&
                                                  user.role === 'admin');
   const IsGuestAdmin = userRole[0] ? userRole[0].role : null;
-  const IsAdminUser = GetCurrentUser()
 
 
 
@@ -66,19 +64,16 @@ export const Bugs = () => {
 
 
   const handleStatusClick = (event, index) => {
-    console.log(event.target)
     setOpenMenuIndexBugId(index);
     setStatusItem(event.currentTarget);
   }; 
   
   const handleStatusClose = (bugId) => {
-    console.log(bugId)
     setOpenMenuIndexBugId(false);
     setStatusItem();
   };
 
   const handleAssigneeClick = (e, index) => {
-    console.log( e.target.getAttribute('value'))
       setAssigneeMenuIndexId(index); 
       setAssigneeMenuAnchorEl(e.currentTarget);
 
@@ -112,7 +107,7 @@ export const Bugs = () => {
             
               }catch(error){
     
-                console.log(error)
+                throw error
               }
              
       };
@@ -145,7 +140,7 @@ export const Bugs = () => {
     try {
       dispatch(GetBugProjectApi(id, tokenUser));
     } catch (error) {
-      console.log(error);
+      throw error
     }
   }, [dispatch, id, tokenUser]);
 

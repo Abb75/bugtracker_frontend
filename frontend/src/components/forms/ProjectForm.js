@@ -8,16 +8,13 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { PostProjectApi } from '../../redux/actions/projectActions';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
-import { Toaster, toast } from 'sonner'
 import { SendSuccessNotification } from '../Alert';
 
 export const ProjectForm = () => {  
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const currentUser = GetCurrentUser()
   const {id} = useParams()
@@ -75,7 +72,7 @@ export const ProjectForm = () => {
       SendSuccessNotification('Project created with success')
       navigate(`/project`)
     }catch(error){
-      console.error(error)
+      throw error
     }
   }
    

@@ -1,5 +1,4 @@
 import React from 'react';
-import Badge from '@mui/material/Badge';
 import { Typography, Box, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 

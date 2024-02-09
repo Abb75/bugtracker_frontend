@@ -22,7 +22,6 @@ const BugChartStatus = () => {
            
             statusCount[bug.status] += 1;
           }); 
-          console.log(statusCount)
           return statusCount;
           }
    
@@ -30,7 +29,6 @@ const BugChartStatus = () => {
   
 
   const bugs = Allbug()
-  console.log(bugs)
   const statusCount = countBugStatus(bugs);
   const data = {
     labels: ['Closed', 'New','Rejected', 'Fixed', 'In progress', 'To be tested', ],

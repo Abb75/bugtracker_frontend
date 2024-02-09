@@ -11,7 +11,6 @@ export const BoxCountTickets = () => {
     const bugCount = Allbug()
     const countProject = useSelector(state => state.project.project)
 
-    //const filterBugCount = bugCount?.filter(bug => bug.is_archived === false)
     const projectfilter = countProject?.flatMap(project =>
       bugCount.filter(bug =>
         bug.project === project.name &&

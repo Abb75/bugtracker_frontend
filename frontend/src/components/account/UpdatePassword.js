@@ -1,12 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import { GetCurrentUser } from '../../redux/selectors/userSelectors';
-import { UpdateUserBugApi } from '../../redux/actions/bugActions';
-import { UpdateUserInfoApi } from '../../redux/actions/userActions';
 import { SendErrorNotification, SendSuccessNotification } from '../Alert';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { GetUserApi } from '../../redux/actions/userActions';
 import { UpdateUserPasswordApi } from '../../redux/actions/userActions';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 

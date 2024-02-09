@@ -1,58 +1,46 @@
 
-import { useEffect, Fragment, useState, useContext } from 'react';
+import { useEffect, Fragment} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Sidebar } from '../../layout/SideBar/sideBar';
 import ProjectChartPriority from './Charts/Project/ProjectChartPriority';
-import { Rectangle } from 'react-chartjs-2';
 import BugChartPriority from './Charts/Bug/BugChartPriority';
 import BugChartStatus from './Charts/Bug/BugChartStatus';
 import { Container, Grid, Paper, Typography , Box} from '@mui/material';
-import { PrintTwoTone } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GetUserProjectApi } from '../../redux/actions/projectActions'
 import { GetAllBugApi } from '../../redux/actions/bugActions';
 import { isTokenExpired } from '../../axios';
-import axios from 'axios';
-import ProjectCountBadge, { BoxCountProject } from './Box/AllProjects';
+import  { BoxCountProject } from './Box/AllProjects';
 import { BoxCountTickets } from './Box/AllTickets';
 import { BoxCountTicketsCritical } from './Box/AllTicketCritical';
-import { BugChartDeveloper } from './Charts/Bug/BugChartDeveloper';
 import{ useMediaQuery, useTheme  } from '@mui/material/'
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
 import { BugChartAdmin } from './Charts/Bug/BugChartAdmin';
 import { GetInvitationUser } from '../../redux/actions/invitationActions';
-import { GetUserApi } from '../../redux/actions/userActions';
 import './Dashboard.css'
 import {ChartAdmin}  from './Charts/Bug/ChartAdmin';
 import { ChartDeveloper } from './Charts/Bug/ChartDeveloper';
 
 export const Dashboard = () => { 
-    console.log("Nouvelle largeur de l'écran : " + window.innerWidth);
-    console.log("Nouvelle hauteur de l'écran : " + window.innerHeight);
+    
     const dispatch = useDispatch()
-    //const tokenUser = localStorage.getItem('access_token');
     const tokenUser = GetTokenUser()  
-    console.log()
     const currentUser = GetCurrentUser()
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
-    const shouldDisplayComponents = !isSmallScreen;
      // Déterminez si l'écran est petit (MD ou moins)
 
     
-    console.log(GetTokenUser())
    
     const navigate = useNavigate();
 
     const dispatchProjectData = () =>{
         try{
-            //dispatch(GetUserApi(currentUser.id, tokenUser));
             dispatch(GetInvitationUser(tokenUser))
             dispatch(GetUserProjectApi(tokenUser));
             dispatch(GetAllBugApi(tokenUser))   }
-        //dispatch(GetUserApi(localStorage.getItem('id'), tokenUser))}
-        catch(error){
-            console.error(error)
+       catch(error){
+            throw error
         }
         
     }

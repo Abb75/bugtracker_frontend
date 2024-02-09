@@ -12,11 +12,9 @@ import { useDispatch } from 'react-redux';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export default function DeleteBugDialog({bug, project}) {
-  //const tokenUser = localStorage.getItem('access_token')
 const tokenUser = GetTokenUser()
   
  const dispatch = useDispatch()
- //const  tokenUser = localStorage.getItem('access_token')
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

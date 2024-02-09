@@ -12,9 +12,6 @@ import { SendSuccessNotification } from '../Alert';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export default function DeleteProjectDialog(project) {
-    //const  tokenUser = localStorage.getItem('access_token')
-    console.log(project)
-    //const tokenUser = localStorage.getItem('access_token')
     const tokenUser = GetTokenUser()
   const [open, setOpen] = React.useState(false);
 
@@ -34,7 +31,7 @@ export default function DeleteProjectDialog(project) {
      
     }
     catch(error){
-        console.error(error)
+        throw error
     }
   }
 

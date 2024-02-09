@@ -1,16 +1,11 @@
-import { Avatar, Drawer, List, Stack, Toolbar, useMediaQuery, ThemeProvider, createTheme, Typography, IconButton } from "@mui/material";
+import { Drawer, List, Stack, Toolbar, useMediaQuery, ThemeProvider, createTheme, Typography, IconButton } from "@mui/material";
 import colorConfigs from '../../components/configs/colorConfigs'
-//import sizeConfigs from "../../configs/sizeConfigs";
 import SidebarItem from "./sideBarItem";
-import appRoutes, { GetAppRoutes } from "./routes/appRoutes";
+import { GetAppRoutes } from "./routes/appRoutes";
 import SidebarItemCollapse from "./sideBarItemCollapse";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import { GetInvitationGuestUser } from "../../redux/selectors/invitationSelectors";
 import { GetCurrentUser } from "../../redux/selectors/userSelectors";
-import { getAppRoutes } from "./routes/appRoutes";
-import { useEffect } from "react";
-import { GetTokenUser } from "../../redux/selectors/userSelectors";
 
 // Assuming you have already created your MUI theme.
 const theme = createTheme({
@@ -38,15 +33,7 @@ const sizeConfigs = {
 export const Sidebar = () => {
   
   const appRoutes = GetAppRoutes()
-  const currentUser = GetCurrentUser()
-  console.log(currentUser)
-  const largeurEcran = window.innerWidth;
-  const hauteurEcran = window.innerHeight;
-  console.log(`Largeur de l'écran : ${largeurEcran}`);
-  console.log(`Hauteur de l'écran : ${hauteurEcran}`);
-  const getInviation = GetInvitationGuestUser()
   const isSmallerScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  //const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <ThemeProvider theme={theme}>

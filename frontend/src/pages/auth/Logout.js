@@ -1,14 +1,8 @@
-import { Height } from '@mui/icons-material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import './DropdownProfile.css';
-import IconButton from "@mui/material/IconButton";
-import { Icon } from '@mui/material';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { Logout } from './Logout';
-import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from '../../axios';
-//import { DeleteUserData, GetUserApi } from '../redux/actions/userActions';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {logout} from '../../redux/actions/userActions';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';

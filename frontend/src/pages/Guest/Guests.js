@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Typography, Grid, Paper, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, MenuItem, IconButton, Menu } from '@mui/material';
-//import { GetUserProjectApi } from '../../../store/actions/projectActions';
 import { ListProjectByUser } from '../../redux/selectors/projectSelectors';
-import { GetGuestUsersByAdmin } from '../../redux/selectors/userSelectors';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useDispatch } from 'react-redux';
-import { UpdateBugApi } from '../../redux/actions/bugActions';
 import { UpdateRoleUserByProjectApi } from '../../redux/actions/userActions';
 import DeleteGuestUserDialog from '../../components/dialog/DeleteGuestUser';
-import { GetUserProjectApi } from '../../redux/actions/projectActions';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
-// Exemple de données de projets et d'utilisateurs invités
 import './Guests.css'
 
 export const GuestsUser = () => {
 
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()  
 
-  const dispatch  = useDispatch()
   const projects = ListProjectByUser()
-  console.log(projects)
   const [selectedProject, setSelectedProject] = useState(null);
   const [projectUsers, setProjectUsers] = useState(null);
   const [openMenuRole, setOpenMenuRole] = useState(false);
@@ -28,7 +20,6 @@ export const GuestsUser = () => {
   const [role, setRole] = useState(false);
 
   const handleRoleClose = (bugId) => {
-    console.log(bugId)
     setOpenMenuRole(false);
     setRole();
   };
@@ -56,7 +47,7 @@ export const GuestsUser = () => {
       );
     
     } catch (error) {
-      console.error(error);
+      throw error
     }
   };
 
@@ -64,7 +55,6 @@ export const GuestsUser = () => {
 
 
   useEffect(() => {
-    // Chargez les utilisateurs invités pour le projet sélectionné
     
       if(selectedProject){
         const guestUser = selectedProject
@@ -74,7 +64,6 @@ export const GuestsUser = () => {
 
 
   useEffect(() => {
-    // Chargez les utilisateurs invités pour le projet sélectionné
     setProjectState(projects)
     
     
@@ -84,7 +73,6 @@ export const GuestsUser = () => {
 
 
   const handleRoleClick = (event, index) => {
-    console.log(event.target)
     setOpenMenuRole(index);
     setRole(event.currentTarget);
   }; 

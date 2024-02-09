@@ -17,7 +17,6 @@ import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelector
 
 
 export const BugForm = () => {
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const currentUser = GetCurrentUser()
   const dispatch = useDispatch()
@@ -68,15 +67,13 @@ export const BugForm = () => {
   };
 
   const AddBug = () => {  
-    console.log(id)
     formData['project'] = id
-    console.log(formData)
     try{
        dispatch(PostBugProjectApi(id,formData, tokenUser))
        navigate(`/project/${id}`)
     }
     catch(error){
-      console.log(error)
+      throw error
     }
   } 
 

@@ -2,16 +2,9 @@
 
 import {useEffect, useState} from 'react';
 import { Container, Typography, Card, CardContent, Button , MenuItem, IconButton, Grid, Menu} from '@mui/material';
-import { GetProjectArchivedApi } from '../../redux/actions/projectActions';
-import { ArchivedProjectData } from '../../redux/selectors/projectSelectors';
 import { useDispatch } from 'react-redux';
-import { UpdateProjectArchivedApi } from '../../redux/actions/projectActions';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { SendSuccessNotification } from '../../components/Alert';
-import ModalConfirmation from '../../components/dialog/DeleteProject';
-import AlertDialog from '../../components/dialog/DeleteProject';
-import DeleteProjectDialog from '../../components/dialog/DeleteProject';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
 import { GetBugArchivedApi } from '../../redux/actions/bugActions';
 import { UpdateBugArchivedApi } from '../../redux/actions/bugActions';
@@ -21,11 +14,9 @@ import DeleteBugDialog from '../../components/dialog/DeleteBug';
 export const ArchivedBug = () => {
   const currentUser = GetCurrentUser()
   const dispatch = useDispatch()
-  //const tokenUser = localStorage.getItem('access_token')
   const tokenUser = GetTokenUser()
   const [bugs, setBugs] = useState([])
   const bugsArchived = GetBugArchived()
-  console.log(bugsArchived)
   const [anchorEl, setAnchorEl] = useState({});
 
      
@@ -52,8 +43,7 @@ export const ArchivedBug = () => {
       SendSuccessNotification('Bug unarchived with success')
       dispatch(GetBugArchivedApi(tokenUser))
     }catch(error){
-      console.error(error)
-    }
+      throw error    }
    
     handleClose();
   };
@@ -66,7 +56,7 @@ export const ArchivedBug = () => {
 
     }
     catch(error){
-      console.error(error)
+      throw error
     }
   }, [tokenUser] )
 
