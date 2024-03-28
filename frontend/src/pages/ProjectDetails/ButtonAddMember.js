@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { GetCurrentUser } from '../../../redux/selectors/userSelectors';
-import {  ProjectDetailsData } from '../../../redux/selectors/projectSelectors';
+import { GetCurrentUser } from '../../redux/selectors/userSelectors';
+import {  ProjectDetailsData } from '../../redux/selectors/projectSelectors';
 
 export const  ButtonAddMember = () => {
   const currentUser = GetCurrentUser()

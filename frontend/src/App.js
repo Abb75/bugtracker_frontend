@@ -6,7 +6,7 @@ import SignUp from './pages/auth/Signup/Register';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { ProjectForm } from './components/forms/ProjectForm';
 import {Sidebar}  from './layout/SideBar/sideBar';
-import { ProjectDetailsPage } from './pages/ProjectDetails/ProjectDetails';
+import { ProjectDetailsPage } from './pages/ProjectDetails/ProjectPage';
 import { BugForm } from './components/forms/BugForm';
 import { ProjectList } from './pages/ProjectList/ProjectList';
 import { NavBar } from './layout/Navbar';

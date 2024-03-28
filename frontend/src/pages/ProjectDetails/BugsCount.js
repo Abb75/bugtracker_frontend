@@ -1,7 +1,7 @@
 import { Paper, Typography, Box } from '@mui/material';
 import { styled } from '@mui/system';
 import { Fragment } from 'react';
-import { BugProject } from '../../../redux/selectors/bugSelectors';
+import { BugProject } from '../../redux/selectors/bugSelectors';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   margin: 'auto',
