@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Grid, Button, Link } from '@mui/material'; // Importer les composants Material-UI nécessaires
+import { Typography, Grid, Button } from '@mui/material'; // Importer les composants Material-UI nécessaires
+import { Link } from 'react-router-dom'; 
 
 const Header = () => {
   return (
@@ -89,7 +90,7 @@ const BugTrackerPage = () => {
         </div>
 
         <div style={{ backgroundColor: '#fff', maxWidth: '800px', margin: '0 auto', padding: '2rem', borderRadius: '8px', marginTop: '2rem', textAlign: 'center' }}>
-          <Link href={'https://bugtracker-frontend-dev-pi.vercel.app/login'}>
+          <Link to={'/login'}>
             <Button variant="contained" color="primary" size="large">
               Essayez notre Bug Tracker
             </Button>
