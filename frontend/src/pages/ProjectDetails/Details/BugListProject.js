@@ -16,16 +16,14 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Button, Container, Menu, MenuItem } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useDispatch } from 'react-redux';
-import { GetBugProjectApi, UpdateUserBugApi, UpdateBugApi, DeleteBugApi, ArchivedBugApi, UpdateBugArchivedApi } from '../../../redux/actions/bugActions';
+import { GetBugProjectApi, UpdateUserBugApi, UpdateBugApi,UpdateBugArchivedApi } from '../../../redux/actions/bugActions';
 import { BugProject } from '../../../redux/selectors/bugSelectors';
 import { ProjectDetails, ProjectDetailsData, SelectedProject } from '../../../redux/selectors/projectSelectors';
 import { useParams, Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
 import { GetCurrentUser, GetTokenUser } from '../../../redux/selectors/userSelectors';
-import Delete from '@mui/icons-material/Delete';
 import ArchiveIcon from '@mui/icons-material/Archive';
-import DeleteBugDialog from '../../../components/dialog/DeleteBug';
 import './BugListProject.css'
 
 
@@ -43,6 +41,7 @@ export const Bugs = () => {
   const [assigneeMenuIndexId, setAssigneeMenuIndexId] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
+  //const tokenUser = localStorage.getItem('access_token');
   const tokenUser = GetTokenUser()  
 
   const bugProject = BugProject();
@@ -52,6 +51,7 @@ export const Bugs = () => {
   const userRole = projectData.invitation.filter(user => user.email === currentUser.email &&
                                                  user.role === 'admin');
   const IsGuestAdmin = userRole[0] ? userRole[0].role : null;
+  const IsAdminUser = GetCurrentUser()
 
 
 
@@ -64,16 +64,19 @@ export const Bugs = () => {
 
 
   const handleStatusClick = (event, index) => {
+    console.log(event.target)
     setOpenMenuIndexBugId(index);
     setStatusItem(event.currentTarget);
   }; 
   
   const handleStatusClose = (bugId) => {
+    console.log(bugId)
     setOpenMenuIndexBugId(false);
     setStatusItem();
   };
 
   const handleAssigneeClick = (e, index) => {
+    console.log( e.target.getAttribute('value'))
       setAssigneeMenuIndexId(index); 
       setAssigneeMenuAnchorEl(e.currentTarget);
 
@@ -107,7 +110,7 @@ export const Bugs = () => {
             
               }catch(error){
     
-                throw error
+                console.log(error)
               }
              
       };
@@ -140,7 +143,7 @@ export const Bugs = () => {
     try {
       dispatch(GetBugProjectApi(id, tokenUser));
     } catch (error) {
-      throw error
+      console.log(error);
     }
   }, [dispatch, id, tokenUser]);
 
@@ -376,9 +379,7 @@ export const Bugs = () => {
                                  Details</Link>
                              
                             </Button>
-                            {currentUser.groups[0] === 'admin' ? (
-                              <DeleteBugDialog bug={row.id} project={id}/>
-                            ):(null)}
+                          
                             
                         </Typography>
                         {/* Contenu pour la section History */}
