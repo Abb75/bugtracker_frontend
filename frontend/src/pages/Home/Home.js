@@ -89,7 +89,7 @@ const BugTrackerPage = () => {
         </div>
 
         <div style={{ backgroundColor: '#fff', maxWidth: '800px', margin: '0 auto', padding: '2rem', borderRadius: '8px', marginTop: '2rem', textAlign: 'center' }}>
-          <Link href={'https://abb75.github.io/bugtracker_frontend/#/login'}>
+          <Link href={'https://bugtracker-frontend-dev-pi.vercel.app/login'}>
             <Button variant="contained" color="primary" size="large">
               Essayez notre Bug Tracker
             </Button>
