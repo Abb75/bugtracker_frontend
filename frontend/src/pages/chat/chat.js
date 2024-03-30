@@ -17,14 +17,14 @@ const ChatWindow = ({ projectId }) => {
   const [newMessage, setNewMessage] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [wsConnected, setWsConnected] = useState(false)
-  const { sendJsonMessage, lastJsonMessage } = useWebSocket(
+  const { sendJsonMessage, lastJsonMessage, readyState  } = useWebSocket(
       `ws://127.0.0.1:8000/chat/project/${id}/room/?authorization=${tokenUser}`, 
     {   
         share: false,
         shouldReconnect: () => true,
     }
   );
-  console.log(lastJsonMessage)
+  console.log(readyState)
 
   useEffect(() => {
     console.log(lastJsonMessage)
