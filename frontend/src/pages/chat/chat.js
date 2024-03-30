@@ -18,7 +18,7 @@ const ChatWindow = ({ projectId }) => {
   const [newMessage, setNewMessage] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [wsConnected, setWsConnected] = useState(false)
-  
+  console.log(tokenUser)
   const { sendJsonMessage, lastJsonMessage } = useWebSocket(
       `ws://127.0.0.1:8000/chat/project/${id}/room/?authorization=${tokenUser}`, 
     {   
