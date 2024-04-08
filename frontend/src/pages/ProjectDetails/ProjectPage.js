@@ -33,9 +33,10 @@ export const ProjectDetailsPage = () => {
        <ProjectDetails  />
         <BugsCount />
         <Bugs /> 
-        <ChatWindow />
-    </div>
         
+
+    </div>
+        <ChatWindow />
     
     </Container>
      

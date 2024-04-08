@@ -3,6 +3,7 @@
     /* Par exemple, aligner à gauche */
     text-align: left;
     margin-left: 20px;
+
   }
   
   .message-other {
@@ -11,6 +12,7 @@
     text-align: right;
     margin-right: 20px;
   }
+  
   
 
   
@@ -22,6 +24,15 @@
 
 @media screen and (max-width:1800px) {
     /* Augmentez la marge de gauche et réduisez la marge de droite pour décaler vers la droite */
+
+    .chat-wrapper{
+      position: fixed; /* Fixe l'élément à la position spécifiée */
+      bottom: 0; /* Le positionne en bas de la page */
+      right: 0; /* Le positionne sur le côté droit de la page */
+      margin-bottom: 7px; /* Ajoute un espace de 20px depuis le bas de la page */
+      margin-right: 90px; /* Ajoute un espace de 20px depuis le côté droit de la page */
+      z-index: 9999;
+    }
   
   .chat-window{
         height: 69%;
@@ -30,6 +41,7 @@
         position: fixed;
         left: 70%;
         top: 30%;
+        scroll-behavior: smooth;
        }
 
        
@@ -50,14 +62,22 @@
        
     .button-chat{
     position: fixed;
-    top: 30%;
+    top: 2%;
     left: 50%;
-    z-index: 1000}
+    z-index: 9999}
   }
     /* Réduisez la marge de gauche et augmentez la marge de droite pour décaler vers la droite */
 
 
     @media screen and (min-width:1800px) {
+      .chat-wrapper{
+        position: fixed; /* Fixe l'élément à la position spécifiée */
+        bottom: 0; /* Le positionne en bas de la page */
+        right: 0; /* Le positionne sur le côté droit de la page */
+        margin-bottom: 10px; /* Ajoute un espace de 20px depuis le bas de la page */
+        margin-right: 150px; /* Ajoute un espace de 20px depuis le côté droit de la page */
+        z-index: 9999;
+      }
         /* Augmentez la marge de gauche et réduisez la marge de droite pour décaler vers la droite */
       .chat-window{
             height: 69%;
@@ -66,6 +86,7 @@
             position: fixed;
             left: 70%;
             top: 30%;
+            scroll-behavior: smooth;
            }
     
            

@@ -11,20 +11,24 @@ import './chat.css'
 
 const ChatWindow = ({ projectId }) => {
   const { id } = useParams();
-  const tokenUser = GetTokenUser();
+  const tokenUser = GetTokenUser()
+  console.log(tokenUser)
   const user = GetCurrentUser()
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [wsConnected, setWsConnected] = useState(false)
   const { sendJsonMessage, lastJsonMessage, readyState  } = useWebSocket(
-      `wss://bugtracker-backend-dev.onrender.com/chat/project/${id}/room/?authorization=${tokenUser}`, 
+      `ws://127.0.0.1:8000/chat/project/${id}/room/?authorization=${tokenUser}`, 
     {   
         share: false,
         shouldReconnect: () => true,
     }
   );
   console.log(readyState)
+
+
+
 
   useEffect(() => {
     console.log(lastJsonMessage)
@@ -82,11 +86,11 @@ const ChatWindow = ({ projectId }) => {
 
   
   return (
-    <div style={{maxHeight: '90px'}} className="chat-wrapper">
-      <Button variant="contained" style={{left:'50px'}}  id='button-chat' onClick={handleToggleChat}> 
+    <div className="chat-wrapper">
+      <Button  variant="contained" style={{left:'50px', zIndex: '9999'}}  id='button-chat' onClick={handleToggleChat}> 
     
 
-        {isChatOpen ? 'Fermer le chat' : 'Ouvrir le chat'}
+        {isChatOpen ? 'Close chat' : 'Open chat'}
       </Button>
       {isChatOpen && (
        <div   className="chat-paper">
@@ -98,16 +102,17 @@ const ChatWindow = ({ projectId }) => {
                   {message.user === user.email ?    
                     (
                       <div className='message-user'>
+                         <div className="message-timestamp">{message.created_at}</div>
                         <div className="message-text">{message.user}</div>
                         <div  className="message-sender">{message.text}</div>
-                        <div className="message-timestamp">{message.created_at}</div>
                       </div>
                     ) :
                     (
                       <div className='message-other' >
+                        <div  className="message-timestamp">{message.created_at}</div>
                         <div className="message-text">{message.user}</div>
                         <div  className="message-sender">{message.text}</div>
-                        <div  className="message-timestamp">{message.created_at}</div>
+                        
                       </div>
                     )
                   }

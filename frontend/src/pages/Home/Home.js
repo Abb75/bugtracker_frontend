@@ -89,6 +89,20 @@ const BugTrackerPage = () => {
           </Typography>
         </div>
 
+        <div style={{ backgroundColor: '#fff', maxWidth: '800px', margin: '0 auto', padding: '2rem', borderRadius: '8px', marginTop: '2rem' }}>
+          <Typography variant="h4" align="center" gutterBottom>
+          Communication efficace avec le chat
+          </Typography>
+          <Grid container justifyContent="center" alignItems="center" spacing={4} sx={{ marginBottom: '2rem' }}>
+            <Grid item>
+            </Grid>
+          </Grid>
+          <Typography variant="body1" align="center" sx={{ maxWidth: '600px', margin: '0 auto' }}>
+          De plus, la fonctionnalité de chat de groupe intégrée permet une communication efficace entre les membres de chaque groupe de projet. Les discussions en temps réel, le partage d'informations et la collaboration sur les solutions sont facilités, ce qui contribue à accélérer la résolution des problèmes et à améliorer la productivité globale de l'équipe. Avec cette fonctionnalité, vous pouvez coordonner les efforts de l'équipe de manière transparente, assurant ainsi une meilleure gestion des tickets et une progression plus fluide du projet.
+
+          </Typography>
+        </div>
+        
         <div style={{ backgroundColor: '#fff', maxWidth: '800px', margin: '0 auto', padding: '2rem', borderRadius: '8px', marginTop: '2rem', textAlign: 'center' }}>
           <Link to={'/login'}>
             <Button variant="contained" color="primary" size="large">
