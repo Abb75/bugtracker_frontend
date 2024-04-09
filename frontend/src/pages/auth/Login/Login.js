@@ -162,7 +162,7 @@ return (
               required
               fullWidth
               name="password"
-              label="password"
+              label="Password"
               type="password"
               id="password"
               autoComplete="current-password"
