@@ -51,7 +51,7 @@ export const RegisterInvitationForm= () => {
 
   const addGuestUser = async() => {
     try {
-      await dispatch(PostCreateGuestUserApi(formData, uuid))
+      await PostCreateGuestUserApi(formData, uuid)
       SendSuccessNotification('Register with success !')
       navigate('/login')
     }
