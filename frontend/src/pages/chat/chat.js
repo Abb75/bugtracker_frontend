@@ -19,7 +19,7 @@ const ChatWindow = ({ projectId }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [wsConnected, setWsConnected] = useState(false)
   const { sendJsonMessage, lastJsonMessage, readyState  } = useWebSocket(
-      `ws://bugtracker-backend-dev.onrender.com/chat/project/${id}/room/?authorization=${tokenUser}`, 
+      `wss://bugtracker-backend-dev.onrender.com/chat/project/${id}/room/?authorization=${tokenUser}`, 
     {   
         share: false,
         shouldReconnect: () => true,
