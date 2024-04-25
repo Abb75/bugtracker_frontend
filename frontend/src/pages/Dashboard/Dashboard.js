@@ -61,8 +61,7 @@ export const Dashboard = () => {
 
         <Fragment>
           <Container id='dashboardcontainer' className='DashboardContainer' style={{marginBottom: '100px'}}>
-             <h1 id='name' style={{fontFamily: 'inherit'}} >Dashboard</h1>
-         
+
               <Container style={{ marginTop: '-200px', maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }}>
                     <Grid container spacing={0}  >
                     <Grid item  style={{ marginBottom: '20px' }}  >
