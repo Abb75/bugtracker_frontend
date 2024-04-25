@@ -134,7 +134,7 @@ export const logout = (tokenUser) => async(dispatch) => {
 
  
  
- export const PostCreateGuestUserApi = async(formData, tokenUser, uuid)  => {   
+ export const PostCreateGuestUserApi = async(formData, uuid)  => {   
   console.log(formData)
   try {
     

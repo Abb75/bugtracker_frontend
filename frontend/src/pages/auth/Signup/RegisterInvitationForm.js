@@ -51,9 +51,9 @@ export const RegisterInvitationForm= () => {
 
   const addGuestUser = async() => {
     try {
-      await dispatch(PostCreateGuestUserApi(formData, tokenUser, uuid))
+      await dispatch(PostCreateGuestUserApi(formData, uuid))
       SendSuccessNotification('Register with success !')
-      navigate('https://abb75.github.io/bugtracker_frontend/#/login')
+      navigate('/login')
     }
     catch(error){
       throw error
