@@ -18,7 +18,7 @@ export const BoxCountTicketsCritical = () => {
     return(
 
 <Box display="flex" justifyContent="flex-end" paddingRight="22px" paddingLeft='5px'  marginLeft='29px' marginTop= '-100px'>
-<Paper elevation={4} sx={{ marginRight: '-20px',marginTop: '190px', width: '500px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'primary.contrastText',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
+<Paper elevation={4} sx={{ backgroundColor: '#F0A04F', marginRight: '-20px',marginTop: '190px', width: '500px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'primary.contrastText',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
 <Box textAlign="center">
     <Typography color={'blue'}  variant="h4" component="h2">
      {projectfilter?.length ?? '0'}
