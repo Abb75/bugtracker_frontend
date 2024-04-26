@@ -52,7 +52,7 @@ export const Dashboard = () => {
              dispatchProjectData()
           
         }
-    }, [currentUser]);
+    }, [currentUser, tokenUser]);
 
 
   

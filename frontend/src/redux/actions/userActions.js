@@ -3,9 +3,7 @@ import { USER_DATA_REQUEST, USER_DATA_SUCCESS, USER_DATA_FAIL, USER_DATA_LOGOUT,
 import { PROJECT_DATA_LOGOUT, PROJECT_DETAILS_DELETE, REMOVE_SELECT_PROJECT } from "../constants/projectConstants";
 import { ALL_BUG_DATA_LOGOUT, BUG_COMMENT_LOGOUT, BUG_COMMENT_REQUEST, BUG_HISTORY_LOGOUT, BUG_PROJECT_LOGOUT } from "../constants/bugConstants";
 import axios from "axios";
-import { GetAllBugApi } from "./bugActions";
 import { INVITATION_USER_REMOVE } from "../constants/invitationConstants";
-import { SendSuccessNotification } from "../../components/Alert";
 
 
    
@@ -193,6 +191,7 @@ export const logout = (tokenUser) => async(dispatch) => {
 
 
 export const LoginApi = (email, password) => async(dispatch) => {
+  console.log('HEREEEEEEEEEEEEEEEEEEEE')
 
     try{
       dispatch({type: TOKEN_USER_REQUEST})
@@ -210,9 +209,8 @@ export const LoginApi = (email, password) => async(dispatch) => {
         await dispatch(GetUserApi(data.id, data.access))
       
         
-        //localStorage.setItem('access_token', data.access);
-        //localStorage.setItem('refresh_token', data.refresh);
-        //localStorage.setItem('id', data.id);
+        localStorage.setItem('access_token', data.access);
+        localStorage.setItem('refresh_token', data.refresh);
         axiosInstance.defaults.headers['Authorization'] = 
               'JWT' + data.access; 
     

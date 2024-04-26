@@ -1,3 +1,4 @@
+import axiosInstance from "../../axios";
 import { ARCHIVED_BUG_REQUEST, ARCHIVED_BUG_SUCCESS } from "../constants/bugConstants";
 import { PROJECT_DATA_FAIL,
      PROJECT_DATA_REQUEST,
@@ -17,18 +18,22 @@ import axios from "axios";
 
    
   export const GetUserProjectApi= (tokenUser) => async(dispatch) => {
+    console.log(tokenUser, '!!!!!!!!!!!')
    try {
 
         dispatch({type: PROJECT_DATA_REQUEST})
         const config = {
-            headers: { 
-                'Content-type':  'application/json',
-                'Accept': 'application/json',
-                Authorization: `Bearer ${tokenUser}`,
-                
-            } 
-        } 
-        const {data} = await axios.get(process.env.REACT_APP_API_URL + 'project' , config )
+          headers: { 
+              'Content-type':  'application/json',
+              'Accept': 'application/json',
+              Authorization : `Bearer ${tokenUser}`
+             
+              
+          } 
+      } 
+      
+        const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + 'project', config) // Utilisez le token mis à jour
+      
         console.log(data)
         dispatch({
             type: PROJECT_DATA_SUCCESS,

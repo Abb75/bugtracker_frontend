@@ -8,10 +8,13 @@ import { ButtonAddBug } from './ButtonAddBug';
 import { ButtonAddMember } from './ButtonAddMember';
 import './ProjectPage.css'
 import ChatWindow from '../chat/chat';
+import { useEffect } from 'react';
 
 export const ProjectDetailsPage = () => {
-  //const tokenUser = localStorage.getItem('access_token')
-
+    const tokenUser = localStorage.getItem('access_token')
+    useEffect(() => {
+      
+    }, [tokenUser])
 
    
       return (

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GetTokenUser } from "./redux/selectors/userSelectors";
 
 const baseUrl = process.env.REACT_APP_API_URL 
 
@@ -25,7 +26,6 @@ export function isTokenExpired(token) {
     return expirationTimestamp < currentTimestamp; // Vérifie si le token est expiré
 }
 
-
 const axiosInstance = axios.create({
     baseUrl: baseUrl,
     timeout: 15000,
@@ -37,7 +37,6 @@ const axiosInstance = axios.create({
         accept: 'application/json',
     },
 });
-
 
 axiosInstance.interceptors.response.use(
     (response) => {
@@ -51,21 +50,22 @@ axiosInstance.interceptors.response.use(
             alert('Server Off');
         return Promise.reject(error)
         }
-
+        /*
         if ( error.response.status === 401 &&
             originalRequest.url === baseUrl + 'token/refresh/')
     {
         window.location.href = '/login/';
         return Promise.reject(error);
     }
-
+    */
     if (
         error.response.data.code === 'token_not_valid' &&
         error.response.status === 401 && 
         error.response.statusText === 'Unauthorized'
+       
     ) {
         const refreshToken = localStorage.getItem('refresh_token');
-    
+        console.log('HEREEEEEEEEEEEEE')
     
 
     if (refreshToken) {
@@ -74,6 +74,7 @@ axiosInstance.interceptors.response.use(
         console.log(tokenParts.exp)
 
         if (tokenParts.exp > now) {
+
             return axiosInstance
             .post(baseUrl + 'token/refresh/', { refresh: refreshToken})
             .then((response) => {
@@ -85,7 +86,7 @@ axiosInstance.interceptors.response.use(
 
                 originalRequest.headers['Authorization'] = 
                 'JWT ' + response.data.access;
-
+                console.log(localStorage.getItem('access_token'))
                 return axiosInstance(originalRequest)
             })
 

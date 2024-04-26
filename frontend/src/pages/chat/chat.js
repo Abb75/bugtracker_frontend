@@ -38,7 +38,7 @@ const ChatWindow = ({ projectId }) => {
       setWsConnected(true)
     }
 
-  }, [sendJsonMessage]);
+  }, [sendJsonMessage, tokenUser]);
   
   useEffect(() => {
     console.log(lastJsonMessage);

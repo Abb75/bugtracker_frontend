@@ -38,7 +38,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
     
     export const  ProjectList = () => {
       
-      const tokenUser = GetTokenUser()
+      const tokenUser =localStorage.getItem('access_token')
       const dispatch = useDispatch()
       const navigate = useNavigate()
       const currentUser = GetCurrentUser()
@@ -83,7 +83,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
       useEffect(() => {  
         dispatch(GetUserProjectApi(tokenUser))
       
-      }, [dispatch]);
+      }, [dispatch, tokenUser]);
 
    
 
