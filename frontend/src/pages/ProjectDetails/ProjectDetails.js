@@ -83,7 +83,7 @@ export const ProjectDetails = () => {
       
         useEffect(() => { 
           getStatusIcon(status)
-        }, [status])
+        }, [status, tokenUser])
       
         return (
        
