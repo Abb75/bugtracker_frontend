@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const baseUrl = 'http://127.0.0.1:8000/api/';
+const baseUrl = process.env.REACT_APP_API_URL 
 
 export function isTokenExpired(token) {
     if (!token) {
-        console.log('RRRRRR')
         // Supprimer les tokens du local storage
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
@@ -76,7 +75,7 @@ axiosInstance.interceptors.response.use(
 
         if (tokenParts.exp > now) {
             return axiosInstance
-            .post('http://127.0.0.1:8000/api/token/refresh/', { refresh: refreshToken})
+            .post(baseUrl + 'token/refresh/', { refresh: refreshToken})
             .then((response) => {
                 localStorage.setItem('access_token', response.data.access);
                 localStorage.setItem('refresh_token', response.data.refresh);
@@ -95,7 +94,6 @@ axiosInstance.interceptors.response.use(
             });
         } else {
             console.log('refresh token is expired' , tokenParts.exp, now);
-            console.log('EEEEEE')
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
             window.location.href = '/login/';
