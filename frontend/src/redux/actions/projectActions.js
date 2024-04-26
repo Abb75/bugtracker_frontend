@@ -64,7 +64,7 @@ import axios from "axios";
                      
                  } 
              } 
-            const {data} = await axios.get(process.env.REACT_APP_API_URL + `project/${id}` , config )
+            const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + `project/${id}` , config )
              console.log(data)
              dispatch({
                  type: PROJECT_DETAILS_SUCCESS,
@@ -116,7 +116,7 @@ export const DeleteProjectById = async(tokenUser, id) => {
                  
              } 
          } 
-        await axios.delete(process.env.REACT_APP_API_URL + `project/${id}` , config )
+        await axiosInstance.delete(process.env.REACT_APP_API_URL + `project/${id}` , config )
          
          }catch(error){
             console.log(error)
@@ -140,7 +140,7 @@ export const DeleteProjectById = async(tokenUser, id) => {
      
          } 
           
-           await axios.post(process.env.REACT_APP_API_URL + 'project/' ,{
+           await axiosInstance.post(process.env.REACT_APP_API_URL + 'project/' ,{
              name : formData.name,
              submission_date : formData.submission_date,
              project_duration : formData.project_duration,
@@ -171,7 +171,7 @@ export const DeleteProjectById = async(tokenUser, id) => {
             }
           }
       
-          await axios.patch(process.env.REACT_APP_API_URL + `project/${projectId}/`, {
+          await axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/`, {
             status : status
           }, config)
     
@@ -196,7 +196,7 @@ export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {
                 
              }
          } 
-          const {data}=  await axios.get(process.env.REACT_APP_API_URL + 'archived-project/' , config )
+          const {data}=  await axiosInstance.get(process.env.REACT_APP_API_URL + 'archived-project/' , config )
           console.log(data)
           dispatch({type: ARCHIVED_PROJECT_SUCCESS,
                     payload: data})
@@ -223,7 +223,7 @@ export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {
         }
       }
   
-      await axios.patch(process.env.REACT_APP_API_URL + `project/${projectId}/`, {
+      await axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/`, {
         is_archived : value
       }, config)
 

@@ -138,7 +138,7 @@ export const logout = (tokenUser) => async(dispatch) => {
     
     
     
-     await axios.put(process.env.REACT_APP_API_URL + `Register-invitation/${uuid}/` ,{
+     await axiosInstance.put(process.env.REACT_APP_API_URL + `Register-invitation/${uuid}/` ,{
        email : formData.email,
        password : formData.password,
        confirm_password : formData.confirm_password,
