@@ -13,7 +13,7 @@ import { DeleteProjectById } from '../../redux/actions/projectActions';
 
 
 export const ArchivedProject = () => {
-  const tokenUser = GetTokenUser();
+  const tokenUser = localStorage.getItem('access_token');
   const dispatch = useDispatch();
   const [projects, setProjects] = useState([]);
   const archivedProjects = ArchivedProjectData();
@@ -77,7 +77,7 @@ export const ArchivedProject = () => {
 
   useEffect(() => {
     setProjects(archivedProjects);
-  }, [archivedProjects]);
+  }, [archivedProjects, tokenUser]);
 
   return (
     <Container maxWidth="md" sx={{ mt: 5 }}>

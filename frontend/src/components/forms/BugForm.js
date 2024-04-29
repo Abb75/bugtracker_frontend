@@ -17,14 +17,13 @@ import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelector
 
 
 export const BugForm = () => {
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const currentUser = GetCurrentUser()
   const dispatch = useDispatch()
   const guestUser = useSelector(state => state.bugProject)
   const projectData = useSelector(state => state.projectDetails.projectDetails)
   const navigate = useNavigate()
   const {id} = useParams()
-  const [invitation, setInvitation] = useState([])
 
   const initialFormData = {
     title: '',
@@ -66,24 +65,16 @@ export const BugForm = () => {
     AddBug()
   };
 
-  const AddBug = () => {  
+  const AddBug = async() => {  
     formData['project'] = id
     try{
-       dispatch(PostBugProjectApi(id,formData, tokenUser))
+       await dispatch(PostBugProjectApi(id,formData, tokenUser))
        navigate(`/project/${id}`)
     }
     catch(error){
       throw error
     }
   } 
-
-  
-
- 
-
-  useEffect(() => {
-   
-  },[])
 
   return (
     <>

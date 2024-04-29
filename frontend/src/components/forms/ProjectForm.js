@@ -15,7 +15,7 @@ import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelector
 import { SendSuccessNotification } from '../Alert';
 
 export const ProjectForm = () => {  
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const currentUser = GetCurrentUser()
   const {id} = useParams()
   const dispatch = useDispatch()

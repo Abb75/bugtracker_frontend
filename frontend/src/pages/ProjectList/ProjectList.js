@@ -21,6 +21,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { SendSuccessNotification } from '../../components/Alert';
 import { GetTokenUser } from '../../redux/selectors/userSelectors';
+import { CatchingPokemonSharp } from '@mui/icons-material';
+import { useHistory } from 'react-router-dom';
+
+
     
 
   
@@ -37,10 +41,11 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
     });
     
     export const  ProjectList = () => {
-      
+
       const tokenUser =localStorage.getItem('access_token')
       const dispatch = useDispatch()
       const navigate = useNavigate()
+
       const currentUser = GetCurrentUser()
       const listProjectUser = ListProjectByUser()
       const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -82,24 +87,31 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
     
       useEffect(() => {  
         dispatch(GetUserProjectApi(tokenUser))
+
       
       }, [dispatch, tokenUser]);
 
+
+
+      const dispatchProjectDetails = async(projectId) => {
+        try {
+          await dispatch(GetProjectDetails(tokenUser, projectId));
+          navigate(`${projectId}`)
+        } catch(error) {
+          throw error;
+        }
+      
+      }
    
-
-    const dispatchProjectDetails = async(projectId) => {
-      try{
-        await dispatch(GetProjectDetails(tokenUser, projectId ))
-        navigate(`/project/${projectId}`)
-      }catch(error){
-        throw error
-      }
-    }
-
-      const OnClick = (projectId) => {
-           dispatchProjectDetails(projectId)
+        const OnClick = (projectId) => {
+          //handleNavigate(projectId)
+        dispatchProjectDetails(projectId)
          
-      }
+             
+           
+        }
+                   
+        
 
     
    

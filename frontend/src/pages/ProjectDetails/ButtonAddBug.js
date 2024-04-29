@@ -7,7 +7,7 @@ export const ButtonAddBug = () => {
 
   return (
     <Box display="start" justifyContent="" mb={2}>
-      <Link href={`https://abb75.github.io/bugtracker_frontend/#/project/${id}/new-bug`} style={{ textDecoration: 'none' }}>
+      <Link href={`#/project/${id}/new-bug`} style={{ textDecoration: 'none' }}>
         <Button
           className="rounded-pill"
           color="primary"

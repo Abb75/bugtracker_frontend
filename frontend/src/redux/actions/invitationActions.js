@@ -3,9 +3,11 @@ import axiosInstance from "../../axios"
 import axios from 'axios'
 import { INVITATION_USER_FAIL, INVITATION_USER_REQUEST, INVITATION_USER_SUCCESS } from "../constants/invitationConstants"
 import { INVITATION_REQUEST } from "../constants/userConstants"
-export const GetInvitationUser = (tokenUser) => async(dispatch) => {
-  console.log('11²11')
-    try {
+
+const tokenUser = localStorage.getItem('access_token')
+export const GetInvitationUser = (tokendUser) => async(dispatch) => {
+
+  try {
  
          dispatch({type: INVITATION_USER_REQUEST})
          const config = {
@@ -21,11 +23,7 @@ export const GetInvitationUser = (tokenUser) => async(dispatch) => {
          dispatch({
              type: INVITATION_USER_SUCCESS,
              payload: data
-         }) 
-         
-   
-
-         
+         })
          }catch(error){
           console.error(error)
              dispatch({

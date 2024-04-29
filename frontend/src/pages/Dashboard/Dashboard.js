@@ -24,7 +24,7 @@ import { ChartDeveloper } from './Charts/Bug/ChartDeveloper';
 export const Dashboard = () => { 
     
     const dispatch = useDispatch()
-    const tokenUser = GetTokenUser()  
+    const tokenUser = localStorage.getItem('access_token') 
     const currentUser = GetCurrentUser()
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
@@ -44,10 +44,9 @@ export const Dashboard = () => {
         }
         
     }
-
     useEffect(() => {
         if (!tokenUser || isTokenExpired(tokenUser)){
-            navigate('/login')}
+            return}
         else{
              dispatchProjectData()
           

@@ -10,10 +10,12 @@ export const BoxCountTicketsCritical = () => {
   bugCount.filter(bug =>
     bug.project === project.name &&
     bug.priority === 'Critical' &&
-    project.is_archived === false &&
-    !bug.is_archived
+    project.is_archived === false 
+    //!bug.is_archived
   )
 );
+const totalTicketCritical = Array.from(new Set(projectfilter));
+
     
     return(
 
@@ -21,7 +23,7 @@ export const BoxCountTicketsCritical = () => {
 <Paper elevation={4} sx={{ backgroundColor: '#F2B16F', marginRight: '-20px',marginTop: '190px', width: '500px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'primary.contrastText',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
 <Box textAlign="center">
     <Typography color={'black'}  variant="h4" component="h2">
-     {projectfilter?.length ?? '0'}
+     {totalTicketCritical?.length ?? '0'}
     </Typography>
  
     <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>

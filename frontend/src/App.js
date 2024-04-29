@@ -11,7 +11,7 @@ import { BugForm } from './components/forms/BugForm';
 import { ProjectList } from './pages/ProjectList/ProjectList';
 import { NavBar } from './layout/Navbar';
 import BugTrackerPage from './pages/Home/Home'
-import { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InvitationForm from './components/forms/InvitationForm';
 import { RegisterInvitationForm } from './pages/auth/Signup/RegisterInvitationForm';
@@ -24,16 +24,15 @@ import { ArchivedBug } from './pages/ArchivedBug/BugList';
 import { HandlerInvitationsPage } from './components/account/ProjectInvitationsHandler';
 import {UserProfile} from './components/account/infoUser';
 import { UserPassword } from './components/account/UpdatePassword';
-import { GetTokenUser } from './redux/selectors/userSelectors';
-import Example, { NewChart } from './pages/Dashboard/Charts/Bug/ChartAdmin';
 import { HashRouter } from 'react-router-dom';
 import RegistrationCongratulations from './pages/auth/Signup/SuccessRegistration';
 
 function App() {
   //const value = useContext(UserContext)
+
   const navigate = useNavigate()
-  const tokenUser = GetTokenUser()
-  const location = useLocation();
+  const tokenUser = localStorage.getItem('access_token');
+  const location = useLocation()
   const showLayout = location.pathname === '/' ||
                       location.pathname === '/login' ||
                       location.pathname === '/register'||
@@ -41,11 +40,12 @@ function App() {
 
 
   useEffect(() => {
-    if(!tokenUser   && !location.pathname === '/Register-invitation/:uuid'
-   ){navigate('/login')
-    }
-  }, [tokenUser])
-    
+    if (!tokenUser && location.pathname !== '/Register-invitation/:uuid') {
+      navigate('/login');
+    } 
+  }, [tokenUser]);
+  
+                      
   return (
    
     <div className='App'>
@@ -63,6 +63,7 @@ function App() {
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/project' element={<ProjectList />} />
           <Route path='/project/:id' element={<ProjectDetailsPage />} />
+
           <Route path='/guests' element={<GuestsUser/>} />
           <Route path='/Login' element={<Login />} />
           <Route path='/project/:projectId/bug/:bugId' element={<BugDetails/>} />

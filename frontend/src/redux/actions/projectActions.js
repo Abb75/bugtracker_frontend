@@ -26,7 +26,7 @@ import axios from "axios";
           headers: { 
               'Content-type':  'application/json',
               'Accept': 'application/json',
-              Authorization : `Bearer ${tokenUser}`
+              Authorization : `Bearer ${localStorage.getItem('access_token')}`
              
               
           } 
@@ -53,6 +53,8 @@ import axios from "axios";
 
 
     export const GetProjectDetails = (tokenUser, id) => async(dispatch) => {
+      console.log(tokenUser)
+      
         try {
      
              dispatch({type: PROJECT_DETAILS_REQUEST})
@@ -60,7 +62,7 @@ import axios from "axios";
                  headers: { 
                      'Content-type':  'application/json',
                      'Accept': 'application/json',
-                     Authorization: `Bearer ${tokenUser}`,
+                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                      
                  } 
              } 

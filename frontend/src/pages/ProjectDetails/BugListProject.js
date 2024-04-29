@@ -30,7 +30,9 @@ import './BugListProject.css'
 
 
 export const Bugs = () => {
-    
+  const archivedCount = 0;
+  const criticalCount = 0;
+  const totalCount = 0;
   const currentUser = GetCurrentUser()
   const [openMenuIndexBugId, setOpenMenuIndexBugId] = useState(false);
   const [statusItem, setStatusItem] = useState();
@@ -42,7 +44,7 @@ export const Bugs = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   //const tokenUser = localStorage.getItem('access_token');
-  const tokenUser = GetTokenUser()  
+  const tokenUser = localStorage.getItem('access_token')  
 
   const bugProject = BugProject();
   const { error, loading } = bugProject || {};
@@ -51,8 +53,9 @@ export const Bugs = () => {
   const userRole = projectData.invitation.filter(user => user.email === currentUser.email &&
                                                  user.role === 'admin');
   const IsGuestAdmin = userRole[0] ? userRole[0].role : null;
-  const IsAdminUser = GetCurrentUser()
-
+  const [countOfTotalBug, setCountOfTotalBug] = useState(0);
+  const [countOfTotalbugArchived, setCountOfTotalbugArchived] = useState(0);
+  const [countTotalCriticalBug, setCountTotalCriticalBug] = useState(0);
 
 
   const handlePriorityClose = () => {
@@ -76,18 +79,17 @@ export const Bugs = () => {
   };
 
   const handleAssigneeClick = (e, index) => {
-    console.log( e.target.getAttribute('value'))
       setAssigneeMenuIndexId(index); 
       setAssigneeMenuAnchorEl(e.currentTarget);
 
       
     }; 
     const handleAssigneeClose = (e, index) => {
-        setAssigneeMenuIndexId(index); 
-        setAssigneeMenuAnchorEl(null);
+      setAssigneeMenuIndexId(index); 
+      setAssigneeMenuAnchorEl(null);
 
-        
-      }; 
+      
+    }; 
 
 
       const handleAssignee = (e, userId, bugId) => {
@@ -116,13 +118,19 @@ export const Bugs = () => {
       };
 
       const handleUpdateBug =  (property,e, bugId) => {
-          
+        const previousPriority = bugStates.find(bug => bug.id === bugId)?.priority;
+
         const value = e.target.getAttribute('value');
               dispatch(UpdateBugApi(id,bugId,tokenUser, value , property ))
               setBugStates((bugStates) =>
               
                   bugStates.map((bug) => {
                     if (bug.id === bugId) {
+                      if (previousPriority === 'Critical' && value !== 'Critical') {
+                      setCountTotalCriticalBug(count => count - 1);
+                    } else if (previousPriority !== 'Critical' && value === 'Critical') {
+                      setCountTotalCriticalBug(count => count + 1);
+                    }
                       return { ...bug, [property]: value }; 
                     }
                     handleStatusClose()
@@ -140,36 +148,93 @@ export const Bugs = () => {
 
 
   useEffect(() => {
-    try {
-      dispatch(GetBugProjectApi(id, tokenUser));
-    } catch (error) {
-      console.log(error);
-    }
-  }, [dispatch, id, tokenUser]);
+    const fetchData = async() => {
+      try {
+        await dispatch(GetBugProjectApi(id, tokenUser))
+      } catch(error) {
+        console.log(error);
+      }
+      }
+  
+    fetchData()
+  }, [dispatch, id, tokenUser ]);
 
 
   
   useEffect(() => {
     setBugStates(bugProject);
+    let archivedCount = 0;
+    let criticalCount = 0;
+    let totalCount = 0;
+
+    bugProject?.forEach(bug => {
+      if (bug.is_archived) {
+        archivedCount += 1;
+      } else if (bug.priority === 'Critical' ) {
+        criticalCount += 1;
+        totalCount += 1;
+      } else {
+        totalCount += 1;
+      }
+    });
+
+    setCountOfTotalBug(totalCount);
+    setCountOfTotalbugArchived(archivedCount);
+    setCountTotalCriticalBug(criticalCount);
   }, [bugProject, projectData.invitation]);
+/*
+  useEffect(() => {
+    let archivedCount = 0;
+    let criticalCount = 0;
+    let totalCount = 0;
+
+    bugProject?.forEach(bug => {
+      if (bug.is_archived) {
+        archivedCount += 1;
+      } else if (bug.priority === 'Critical' ) {
+        criticalCount += 1;
+        totalCount += 1;
+      } else {
+        totalCount += 1;
+      }
+    });
+
+    setCountOfTotalBug(totalCount);
+    setCountOfTotalbugArchived(archivedCount);
+    setCountTotalCriticalBug(criticalCount);
+  }, [bugProject]);
+*/
 
 
-  const handleArchivedBug = async(bugId, shouldArchive) => {
-          
-          try{
-            await UpdateBugArchivedApi(id, bugId, tokenUser, shouldArchive, currentUser.id)
-          }catch(error){
-        
+const handleArchivedBug = async (bugId, shouldArchive) => {
+  try {
+    await UpdateBugArchivedApi(id, bugId, tokenUser, shouldArchive, currentUser.id);
+  } catch (error) {
+    console.log(error);
+  }
+
+  setBugStates(bugStates =>
+    bugStates.map(bug => {
+      if (bug.id === bugId) {
+        if (!bug.is_archived && shouldArchive) {
+          setCountOfTotalbugArchived(count => count + 1);
+          setCountOfTotalBug(count => count - 1);
+          if (bug.priority === 'Critical') {
+            setCountTotalCriticalBug(count => count - 1);
+          }
+        } else if (bug.is_archived && !shouldArchive) {
+          setCountOfTotalbugArchived(count => count - 1);
+          setCountOfTotalBug(count => count + 1);
+          if (bug.priority === 'Critical') {
+            setCountTotalCriticalBug(count => count + 1);
+          }
         }
-          setBugStates((bugStates) =>
-              bugStates.map((bug) => {
-                if (bug.id === bugId) {
-                  return { ...bug, is_archived: shouldArchive }; 
-                }
-               
-                return bug;
-              })
-          )}
+        return { ...bug, is_archived: shouldArchive };
+      }
+      return bug;
+    })
+  );
+};
 
 
   const [openRows, setOpenRows] = useState([]);
@@ -185,9 +250,34 @@ export const Bugs = () => {
   };
 
 
+
  
     return (
-
+      <Fragment>
+      <Box display='flex' justifyContent="flex-end" paddingRight="3px" marginTop={'-300px'}  >
+        <Paper elevation={4} sx={{marginBottom: '30px',  width: '305px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'primary.main', color: 'primary.contrastText' }}>
+          <Box textAlign="center">
+            <Typography variant="h4" component="h2">
+              {countOfTotalBug}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              Total(s) Bug
+            </Typography>
+            <Typography variant="h4" component="h2">
+              {countTotalCriticalBug}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              Critical(s) Bug
+            </Typography>
+            <Typography variant="h4" component="h2">
+              {countOfTotalbugArchived}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              Archived(s) Bug
+            </Typography>
+          </Box>
+        </Paper>
+      </Box>
     
 
 
@@ -394,5 +484,6 @@ export const Bugs = () => {
         </Paper>
       </TableContainer>
     </Container>
+    </Fragment>
   );
 }

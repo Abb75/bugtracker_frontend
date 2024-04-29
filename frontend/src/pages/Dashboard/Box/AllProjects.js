@@ -6,7 +6,8 @@ export const BoxCountProject = () => {
 
     const countProject = useSelector(state => state.project.project )
 
-    const filterProjectData = countProject?.filter(project => project.is_archived === false)
+    const filterProjectData = countProject?.filter(
+      project => project.is_archived === false)
     
     return(
 

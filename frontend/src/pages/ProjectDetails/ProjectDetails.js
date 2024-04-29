@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Paper, Box, Typography, Divider, IconButton, Popover, MenuItem, Container, useMediaQuery} from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/system'; 
 import { CheckCircle, Error, Warning, Info, Help } from '@mui/icons-material';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -8,11 +8,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { ProjectDetailsData, SelectedProject } from '../../redux/selectors/projectSelectors';
 import { UpdateProjectApi } from '../../redux/actions/projectActions';
 import { GetCurrentUser, GetTokenUser } from '../../redux/selectors/userSelectors';
+import { GetProjectDetails } from '../../redux/actions/projectActions'
+import { useDispatch } from 'react-redux';
 
 const StyledPaper = styled(Paper)(({ theme }) => (  {
  
-
-  
   margin: 'auto',
   width: '70%',
   height:'300px',
@@ -23,19 +23,21 @@ const StyledPaper = styled(Paper)(({ theme }) => (  {
   borderRadius: '8px',
   marginLeft : useMediaQuery(theme.breakpoints.down("md")) ?  '50px' : '0px',
  
-  
 }));
 
 
 export const ProjectDetails = () => {
-    const projectData = ProjectDetailsData()
+   
     const currentUser = GetCurrentUser()   
-    const tokenUser = GetTokenUser()  
-
+    const tokenUser = localStorage.getItem('access_token')
+    const dispatch = useDispatch()
     const {id} = useParams()
     const [anchorEl, setAnchorEl] = useState(null);
-    const [status, setStatus] = useState(projectData.status)
-    const [statusIcon, setStatusIcon] = useState(projectData.status)
+    const projectData =ProjectDetailsData()
+    //console.log(projectData)
+
+    const [status, setStatus] = useState()
+    const [statusIcon, setStatusIcon] = useState() 
     const handlePopoverOpen = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -80,10 +82,16 @@ export const ProjectDetails = () => {
           
             }
         }
+
       
+      
+       
+
         useEffect(() => { 
           getStatusIcon(status)
         }, [status, tokenUser])
+
+      
       
         return (
        

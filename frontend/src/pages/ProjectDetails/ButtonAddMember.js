@@ -8,7 +8,7 @@ import {  ProjectDetailsData } from '../../redux/selectors/projectSelectors';
 export const  ButtonAddMember = () => {
   const currentUser = GetCurrentUser()
   const projectData = ProjectDetailsData()
-  const userRole = projectData?.invitation.filter(user => user.email === currentUser.email ) 
+  const userRole = projectData?.invitation.filter(user => user.email === currentUser.email ) || []
 
     
     const {id} = useParams() 

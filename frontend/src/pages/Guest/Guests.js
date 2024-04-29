@@ -18,7 +18,7 @@ import './Guests.css'
 
 export const GuestsUser = () => {
 
-  const tokenUser = GetTokenUser()  
+  const tokenUser = localStorage.getItem('access_token')  
   const dispatch  = useDispatch()
   const projects = ListProjectByUser()
   const [selectedProject, setSelectedProject] = useState(null);
@@ -74,7 +74,7 @@ export const GuestsUser = () => {
         const guestUser = selectedProject
         setProjectUsers(guestUser.invitation)
       }
-  }, [selectedProject]);
+  }, [selectedProject, tokenUser]);
 
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { GetTokenUser } from "./redux/selectors/userSelectors";
 const baseUrl = process.env.REACT_APP_API_URL 
 
 export function isTokenExpired(token) {
+    console.log('AB')
     if (!token) {
         // Supprimer les tokens du local storage
         localStorage.removeItem('access_token');
@@ -67,15 +68,16 @@ axiosInstance.interceptors.response.use(
         const refreshToken = localStorage.getItem('refresh_token');
         console.log('HEREEEEEEEEEEEEE')
     
+   
 
     if (refreshToken) {
         const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
         const now = Math.ceil(Date.now()/1000);
         console.log(tokenParts.exp)
-
+        console.log(localStorage.getItem('access_token'))
         if (tokenParts.exp > now) {
-
-            return axiosInstance
+            
+            return  axiosInstance
             .post(baseUrl + 'token/refresh/', { refresh: refreshToken})
             .then((response) => {
                 localStorage.setItem('access_token', response.data.access);
@@ -87,6 +89,7 @@ axiosInstance.interceptors.response.use(
                 originalRequest.headers['Authorization'] = 
                 'JWT ' + response.data.access;
                 console.log(localStorage.getItem('access_token'))
+                console.log(originalRequest)
                 return axiosInstance(originalRequest)
             })
 

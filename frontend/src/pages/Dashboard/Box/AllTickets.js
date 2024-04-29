@@ -8,16 +8,19 @@ import { SettingsBrightnessRounded } from '@mui/icons-material';
 
 export const BoxCountTickets = () => {
 
-    const bugCount = Allbug()
+    const bugCount = Allbug()   
+    console.log(bugCount) 
+     console.log(bugCount)
+
     const countProject = useSelector(state => state.project.project)
 
     const projectfilter = countProject?.flatMap(project =>
-      bugCount.filter(bug =>
-        bug.project === project.name &&
-        project.is_archived === false &&
-        !bug.is_archived
+      bugCount.filter(bug =>        
+        !project.is_archived  
+        //!bug.is_archived
       )
     );
+    const totalTicket = Array.from(new Set(projectfilter));
     return(
 
 
@@ -26,7 +29,7 @@ export const BoxCountTickets = () => {
 <Paper elevation={4} sx={{backgroundColor: '#F2B16F',marginLeft: '180px',marginBottom: '-50px', width: '345px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'primary.contrastText',  boxShadow: '1px 1px 7px rgba(0.0, 0.0, 0.0, 0.1)' }}>
   <Box textAlign="center">
   <Typography color={'black'} variant="h4" component="h2">
-     {projectfilter?.length ??  '0'}
+     {totalTicket?.length ??  '0'}
     </Typography>
  
     <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>

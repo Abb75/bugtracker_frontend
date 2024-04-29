@@ -24,18 +24,19 @@ import{ ADD_BUG_REQUEST,
         ARCHIVED_BUG_FAIL} from "../constants/bugConstants";
 import axiosInstance from "../../axios";
 
+const tokenUser = localStorage.getItem('access_token')
 
-export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => {   
-   
+
+export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) => {   
+   console.log('DDDDDDDD')
     dispatch({type:ADD_BUG_REQUEST})
      try {
-        console.log(tokenUser)
         const config = {
           headers: { 
              
               'Content-type':  'application/json',
               'Accept': 'application/json',
-              Authorization: `Bearer ${tokenUser}`,
+              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
              
           }
       } 
@@ -72,7 +73,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
             headers: { 
                 'Content-type':  'application/json',
                 'Accept': 'application/json',
-                Authorization: `Bearer ${tokenUser}`,
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 
             } 
         } 
@@ -102,7 +103,7 @@ export const PostBugProjectApi = (id,formData, tokenUser) => async(dispatch) => 
                  
                     'Content-type':  'application/json',
                     'Accept': 'application/json',
-                    Authorization: `Bearer ${tokenUser}`,
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 
               }
         
@@ -143,7 +144,7 @@ export const UpdateBugApi =  (projectId, bugId, tokenUser, value, property) => a
                   headers: {
                   'Content-type': 'application/json',
                   'Accept': 'application/json',
-                  Authorization: `Bearer ${tokenUser}`, 
+                  Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
                   }
               }
           
@@ -370,7 +371,7 @@ export const DeleteBugApi = async(bugId,projectId,  tokenUser) => {
       headers: { 
           'Content-type':  'application/json',
           'Accept': 'application/json',
-          Authorization: `Bearer ${tokenUser}`,
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       }
     } 
   await axiosInstance.delete(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, config)
@@ -397,12 +398,11 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
                 
                  'Content-type':  'application/json',
                  'Accept': 'application/json',
-                 Authorization: `Bearer ${tokenUser}`,
+                 Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 
              }
          } 
           const {data}=  await axiosInstance.get(process.env.REACT_APP_API_URL + 'archived-bug/' , config )
-          console.log(data)
           dispatch({type: ARCHIVED_BUG_SUCCESS,
                     payload: data})
            
@@ -422,7 +422,7 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
           headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            Authorization: `Bearer ${tokenUser}`, 
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
           }
         }
     
