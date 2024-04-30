@@ -114,11 +114,11 @@ export const ArchivedBug = () => {
       </Typography>
 
       {bugs?.map((bug) => (
-        <Card style={{ height: '140px', width: '900px' }} key={bug.id} sx={{ mb: 2 }}>
+        <Card style={{ height: '150px', width: '900px' }} key={bug.id} sx={{ mb: 2 }}>
           <CardContent>
             <Grid marginLeft={'10px'} container justifyContent='space-between' alignItems="center">
               {/* Titre du projet, centré */}
-              <Typography marginLeft={'20px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
+              <Typography marginLeft={'110px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
               <strong>{bug.title}</strong>
               </Typography>
 
@@ -167,6 +167,9 @@ export const ArchivedBug = () => {
               </Typography>
             <Typography variant="body2" color="text.secondary">
               Project :  <strong>{bug.project}</strong>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Priority :  <strong>{bug.priority}</strong>
             </Typography>
           </CardContent>
         </Card>

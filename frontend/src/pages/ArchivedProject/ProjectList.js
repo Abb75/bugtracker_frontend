@@ -92,6 +92,10 @@ export const ArchivedProject = () => {
               <Typography marginLeft={'50px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
                 <strong>{project.name}</strong>
               </Typography>
+             
+              <Typography marginBottom={'10px'} variant="h8" component="div" sx={{ mb: 1,  flex: 1 }}>
+                <strong> created at : {project.submission_date}</strong>
+              </Typography>
 
               <Grid>
                 <IconButton onClick={(event) => handleClick(event, project.id)}>
