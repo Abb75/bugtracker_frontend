@@ -86,7 +86,7 @@ import { useHistory } from 'react-router-dom';
              
     
       useEffect(() => {  
-        dispatch(GetUserProjectApi())
+        dispatch(GetUserProjectApi(tokenUser))
 
       
       }, [dispatch, tokenUser]);
