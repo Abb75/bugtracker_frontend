@@ -38,7 +38,7 @@ const handleDeleteInvitation = async(invitation, project) => {
 
 useEffect(() => {
   dispatch(GetInvitationUser(tokenUser))
-}, [dispatch])
+}, [dispatch, tokenUser])
 
 
  
@@ -106,6 +106,9 @@ useEffect(() => {
             <Typography variant="h6" component="div">
               Your role : {invitation.role}
             </Typography>
+            <Typography variant="h6" component="div">
+              Invited by : {invitation.invited_by}
+            </Typography>
             <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
                 <Button
@@ -113,7 +116,7 @@ useEffect(() => {
                   color="primary"
                   onClick={() => handleConfirmInvitation(invitation.id, invitation.project_id,  true)}
                 >
-                  Accepter
+                  Accept
                 </Button>
               </Grid>
               <Grid item>
@@ -122,7 +125,7 @@ useEffect(() => {
                   color="secondary"
                   onClick={() => handleConfirmInvitation(invitation.id, invitation.project_id, false)}
                 >
-                  Refuser
+                  Decline
                 </Button>
               </Grid>
             </Grid>
