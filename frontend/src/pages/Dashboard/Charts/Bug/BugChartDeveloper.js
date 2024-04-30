@@ -19,7 +19,6 @@ export const BugChartDeveloper = () => {
   const datadict = []
   const allBug = Allbug()
   const projet = ListProjectByUser()
-  const bugproject = BugProject()
   
   projet?.forEach((project) => {
    

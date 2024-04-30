@@ -116,9 +116,9 @@ export const ArchivedBug = () => {
       {bugs?.map((bug) => (
         <Card style={{ height: '150px', width: '900px' }} key={bug.id} sx={{ mb: 2 }}>
           <CardContent>
-            <Grid marginLeft={'10px'} container justifyContent='space-between' alignItems="center">
+            <Grid textAlign={'center'} container justifyContent='space-between' alignItems="center">
               {/* Titre du projet, centré */}
-              <Typography marginLeft={'110px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
+              <Typography  marginLeft={'110px'} variant="h6" component="div" sx={{ mb: 1, textAlign: 'center', flex: 1 }}>
               <strong>{bug.title}</strong>
               </Typography>
 
@@ -143,16 +143,19 @@ export const ArchivedBug = () => {
 
               <Grid>
               
-              <Grid>
-                <Button
-                  onClick={() => handleDeleteBug(bug.id, bug.project_id)}
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<DeleteIcon />}
-                >
-                  Delete
-                </Button>
-              </Grid>
+
+              {currentUser.groups[0] === 'admin' ? ( <Grid>
+
+                      <Button
+                        onClick={() => handleDeleteBug(bug.id, bug.project_id)}
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                      >
+                        Delete
+                      </Button>
+                      </Grid>) : (null)}
+          
               </Grid>
              
             </Grid>
