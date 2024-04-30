@@ -50,7 +50,7 @@ const tokenUser = localStorage.getItem('access_token')
 
 
     export const GetProjectDetails = (id) => async(dispatch) => {
-      
+      console.log(tokenUser)
         try {
      
              dispatch({type: PROJECT_DETAILS_REQUEST})
