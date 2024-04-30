@@ -96,7 +96,7 @@ export const Bugs = () => {
         const value = e.target.getAttribute('value');
       
         try{    
-              dispatch(UpdateUserBugApi(id, bugId , userId))
+              dispatch(UpdateUserBugApi(id, bugId , userId, tokenUser))
               setBugStates((bugStates) =>
             
                 bugStates.map((bug) => {
@@ -121,7 +121,7 @@ export const Bugs = () => {
         const previousPriority = bugStates.find(bug => bug.id === bugId)?.priority;
 
         const value = e.target.getAttribute('value');
-              dispatch(UpdateBugApi(id,bugId, value , property ))
+              dispatch(UpdateBugApi(id,bugId, value , property, tokenUser ))
               setBugStates((bugStates) =>
               
                   bugStates.map((bug) => {
@@ -150,7 +150,7 @@ export const Bugs = () => {
   useEffect(() => {
     const fetchData = async() => {
       try {
-        await dispatch(GetBugProjectApi(id))
+        await dispatch(GetBugProjectApi(id, tokenUser))
       } catch(error) {
         console.log(error);
       }
@@ -186,7 +186,7 @@ export const Bugs = () => {
 
 const handleArchivedBug = async (bugId, shouldArchive) => {
   try {
-    await UpdateBugArchivedApi(id, bugId, shouldArchive, currentUser.id);
+    await UpdateBugArchivedApi(tokenUser,id, bugId, shouldArchive, currentUser.id);
   } catch (error) {
     console.log(error);
   }

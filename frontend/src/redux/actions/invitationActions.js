@@ -36,7 +36,7 @@ console.log(tokenUser)
 
 
 
-     export const ConfirmInvitationUserByProjectApi = async(value, projectId, invitationId) => {
+     export const ConfirmInvitationUserByProjectApi = async(value, projectId, invitationId, tokenUser) => {
         try{
         
       
@@ -60,7 +60,7 @@ console.log(tokenUser)
       }
 
 
-      export const DeleteGuestUserInvitationProjectApi = async(projectId, invitationId)  => {   
+      export const DeleteGuestUserInvitationProjectApi = async(projectId, invitationId, tokenUser)  => {   
         try {
          
            const config = {
@@ -83,7 +83,7 @@ console.log(tokenUser)
       
        }
       
-       export const PostInvitationApi = (project_id, formData) => async(dispatch) => {   
+       export const PostInvitationApi = (project_id, formData, tokenUser) => async(dispatch) => {   
         try {
            dispatch({type: INVITATION_REQUEST})
            const config = {

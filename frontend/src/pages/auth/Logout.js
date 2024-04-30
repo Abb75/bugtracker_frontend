@@ -19,7 +19,7 @@ export const HandleLogout = () => {
 
     const HandleLogout = () => {
       
-            dispatch(logout())
+            dispatch(logout(tokenUser))
             
             navigate('/login')
       

@@ -47,7 +47,7 @@ export const DeleteUserData = (dispatch) => {
 }
   
 
-export const logout = () => async(dispatch) => {
+export const logout = (tokenUser) => async(dispatch) => {
 
     try{
         dispatch({
@@ -70,8 +70,7 @@ export const logout = () => async(dispatch) => {
         });
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
-            localStorage.removeItem('email');
-            localStorage.removeItem('id');
+          
             
             axiosInstance.defaults.headers['Authorization'] = null;
 
@@ -152,7 +151,7 @@ export const logout = () => async(dispatch) => {
 
  
 
- export const GetAllGuestUserByAdmin = () => async(dispatch) => {
+ export const GetAllGuestUserByAdmin = (tokenUser) => async(dispatch) => {
  
   try{
         dispatch({type: ALL_INVITATION_BY_ADMIN_USER_REQUEST})
@@ -214,7 +213,7 @@ export const LoginApi = (email, password) => async(dispatch) => {
 }
 
 
-export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId) => {
+export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId, tokenUser) => {
   try{
   
 
@@ -258,7 +257,7 @@ export const selectRoleGuestUser = (role)  => (dispatch) => {
 
 
 
-export const UpdateUserInfoApi = async(userId, formData) => {
+export const UpdateUserInfoApi = async(userId, formData, tokenUser) => {
   try{
     const config = {
       headers: { 
@@ -282,7 +281,7 @@ export const UpdateUserInfoApi = async(userId, formData) => {
 
 
 
-export const UpdateUserPasswordApi = async(userId, formData) => {
+export const UpdateUserPasswordApi = async(userId, formData, tokenUser) => {
 
   try{
     

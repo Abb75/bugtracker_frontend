@@ -25,7 +25,7 @@ export const BugComment = () => {
 
     const formattedDate = new Date().toISOString().split('T')[0];
     const currentUser = GetCurrentUser()
-    const tokenUser = GetTokenUser()  
+    const tokenUser = localStorage.getItem('access_token')  
 
     const dispatch = useDispatch()
     const divRef = useRef(null);
@@ -47,7 +47,7 @@ export const BugComment = () => {
 
 
     useEffect(() => {
-          dispatch(GetBugCommentsApi(projectId, bugId))
+          dispatch(GetBugCommentsApi(projectId, bugId, tokenUser))
     }, [projectId, bugId])
   
 
@@ -60,7 +60,7 @@ export const BugComment = () => {
 
       const deleteComment =  (commentId) => {
          try{
-            DeleteBugCommentApi(projectId, bugId, commentId)
+            DeleteBugCommentApi(projectId, bugId, commentId, tokenUser)
             
 
          }
@@ -71,8 +71,8 @@ export const BugComment = () => {
 
       const createComment = async(formData) => {
         try {
-           await PostBugCommentApi(projectId, bugId, formData  )
-           await dispatch(GetBugCommentsApi(projectId, bugId));
+           await PostBugCommentApi(projectId, bugId, formData , tokenUser )
+           await dispatch(GetBugCommentsApi(projectId, bugId, tokenUser));
          
            divRef.current && scrollToBottom();
         }

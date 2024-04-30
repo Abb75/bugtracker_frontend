@@ -14,10 +14,8 @@ import ChatWindow from '../chat/chat';
 import { GetBugProjectApi } from '../../redux/actions/bugActions';
 
 export const ProjectDetailsPage = () => {
-  console.log('DETAILSSSSSSS');
-  const dispatch = useDispatch();
-  const { id } = useParams();    
-  const tokenUser = localStorage.getItem('access_token');
+  
+  
 
 
 

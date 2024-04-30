@@ -71,7 +71,7 @@ import { useHistory } from 'react-router-dom';
 
           try{
 
-            await UpdateProjectArchivedApi(projectId,true)
+            await UpdateProjectArchivedApi(projectId,true, tokenUser)
             SendSuccessNotification('Project archived with success')
             dispatch(GetUserProjectApi())
           }catch(error){
@@ -95,7 +95,7 @@ import { useHistory } from 'react-router-dom';
 
       const dispatchProjectDetails = async(projectId) => {
         try {
-          await dispatch(GetProjectDetails(projectId));
+          await dispatch(GetProjectDetails(projectId, tokenUser));
           navigate(`${projectId}`)
         } catch(error) {
           throw error;

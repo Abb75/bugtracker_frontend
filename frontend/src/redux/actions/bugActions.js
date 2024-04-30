@@ -27,7 +27,7 @@ import axiosInstance from "../../axios";
 const tokenUser = localStorage.getItem('access_token')
 
 
-export const PostBugProjectApi = (id,formData, ) => async(dispatch) => {   
+export const PostBugProjectApi = (id,formData,tokenUser ) => async(dispatch) => {   
     dispatch({type:ADD_BUG_REQUEST})
      try {
         const config = {
@@ -91,7 +91,7 @@ export const PostBugProjectApi = (id,formData, ) => async(dispatch) => {
     
     }
 
-    export const GetBugProjectApi = (id) => async(dispatch) => {   
+    export const GetBugProjectApi = (id, tokenUser) => async(dispatch) => {   
         try {
             dispatch({type: BUG_PROJECT_REQUEST})
            
@@ -130,7 +130,7 @@ export const DeleteBugProject = () => (dispatch) => {
 }
 
 
-export const UpdateBugApi =  (projectId, bugId, value, property) => async(dispatch)   =>  {
+export const UpdateBugApi =  (projectId, bugId, value, property, tokenUser) => async(dispatch)   =>  {
 
   try{
           dispatch({type: UPDATE_BUG_REQUEST})
@@ -159,7 +159,7 @@ export const UpdateBugApi =  (projectId, bugId, value, property) => async(dispat
 }
 
 
-export const UpdateUserBugApi =  (projectId, bugId, user) => async(dispatch) => {
+export const UpdateUserBugApi =  (projectId, bugId, user, tokenUser) => async(dispatch) => {
     dispatch({type: UPDATE_BUG_REQUEST})
         try {
         const config = {
@@ -198,7 +198,7 @@ export const UpdateUserBugApi =  (projectId, bugId, user) => async(dispatch) => 
 
 
 
-    export const GetBugHistoryApi = (projectId, bugId) => async(dispatch) => {   
+    export const GetBugHistoryApi = (projectId, bugId, tokenUser) => async(dispatch) => {   
      
        try {
            dispatch({type: BUG_HISTORY_REQUEST})
@@ -229,7 +229,7 @@ export const UpdateUserBugApi =  (projectId, bugId, user) => async(dispatch) => 
          }
      
        }
-       export const GetBugCommentsApi = (projectId, bugId) => async(dispatch) => {   
+       export const GetBugCommentsApi = (projectId, bugId, tokenUser) => async(dispatch) => {   
      
         try {
             dispatch({type: BUG_COMMENT_REQUEST})
@@ -262,7 +262,7 @@ export const UpdateUserBugApi =  (projectId, bugId, user) => async(dispatch) => 
         }
       
      
-export const PostBugCommentApi = async(projectId,bugId,formData) => {   
+export const PostBugCommentApi = async(projectId,bugId,formData, tokenUser) => {   
          try {
            
             const config = {
@@ -293,7 +293,7 @@ export const PostBugCommentApi = async(projectId,bugId,formData) => {
     
 
      
-export const DeleteBugCommentApi = async(projectId,bugId,commentId) => {   
+export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) => {   
           
     try {
       const config = {
@@ -316,7 +316,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId) => {
 
 
    
-  export const GetBugIdProjectApi = async(bugId, projectId) =>  {
+  export const GetBugIdProjectApi = async(bugId, projectId, tokenUser) =>  {
     try {
  
          
@@ -344,7 +344,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId) => {
 
 
 
-export const DeleteBugApi = async(bugId,projectId) => {   
+export const DeleteBugApi = async(bugId,projectId, tokenUser) => {   
   try {
     const config = {
       headers: { 
@@ -368,7 +368,7 @@ export const DeleteBugApi = async(bugId,projectId) => {
 
 
 
-export const GetBugArchivedApi = () => async(dispatch) => {   
+export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {   
         try {
            dispatch({type: ARCHIVED_BUG_REQUEST})
            const config = {
@@ -392,7 +392,7 @@ export const GetBugArchivedApi = () => async(dispatch) => {
 
 
             
-    export const UpdateBugArchivedApi = async (projectId, bugId, value, user) => {
+    export const UpdateBugArchivedApi = async (tokenUser, projectId, bugId, value, user) => {
       try {
         const config = {
           headers: {

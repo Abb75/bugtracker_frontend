@@ -100,8 +100,8 @@ export const GuestsUser = () => {
   const handleDeleteConfirmationClose = async (confirmed) => {
     if (confirmed) {
       try { 
-        await DeleteGuestUserInvitationProjectApi(selectedProject.id, userIdToDelete)  
-        dispatch(GetUserProjectApi())
+        await DeleteGuestUserInvitationProjectApi(selectedProject.id, userIdToDelete, tokenUser)  
+        dispatch(GetUserProjectApi(tokenUser))
         SendSuccessNotification('User delete with success');
       } catch (error) {
         console.error(error);

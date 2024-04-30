@@ -22,7 +22,7 @@ import { DeleteBugApi ,GetBugProjectApi } from '../../redux/actions/bugActions';
 export const ArchivedBug = () => {
   const currentUser = GetCurrentUser()
   const dispatch = useDispatch()
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const [bugs, setBugs] = useState([])
   const bugsArchived = GetBugArchived()
   const [anchorEl, setAnchorEl] = useState({});
@@ -37,9 +37,9 @@ export const ArchivedBug = () => {
   const handleDeleteConfirmationClose = async (confirmed) => {
     if (confirmed) {
       try { 
-        await  DeleteBugApi(bugIdToDelete, projectId)
+        await  DeleteBugApi(bugIdToDelete, projectId, tokenUser)
         dispatch(GetBugProjectApi(projectId ))
-        dispatch(GetBugArchivedApi())
+        dispatch(GetBugArchivedApi(tokenUser))
         SendSuccessNotification('Bug delete with success !')
 
       } catch (error) {
@@ -76,7 +76,7 @@ export const ArchivedBug = () => {
     // Add your logic here based on the selected option
 
     try{
-      await UpdateBugArchivedApi(projectId, bugId,false, null )
+      await UpdateBugArchivedApi(tokenUser, projectId, bugId,false, null )
       SendSuccessNotification('Bug unarchived with success')
       dispatch(GetBugArchivedApi())
     }catch(error){
@@ -90,7 +90,7 @@ export const ArchivedBug = () => {
 
   useEffect(() => {
     try {
-      dispatch(GetBugArchivedApi())
+      dispatch(GetBugArchivedApi(tokenUser))
 
     }
     catch(error){

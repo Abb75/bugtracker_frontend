@@ -52,7 +52,7 @@ const tokenUser = localStorage.getItem('access_token')
     
 
 
-    export const GetProjectDetails = (id) => async(dispatch) => {
+    export const GetProjectDetails = (id, tokenUser) => async(dispatch) => {
       console.log(tokenUser)
         try {
      
@@ -104,7 +104,7 @@ export const removeProject = (dispatch) => {
     })
 }
 
-export const DeleteProjectById = async(id) => {
+export const DeleteProjectById = async(id, tokenUser) => {
     try {
  
        
@@ -125,7 +125,7 @@ export const DeleteProjectById = async(id) => {
      
      }
      
-     export const PostProjectApi = (formData) => async(dispatch) => {   
+     export const PostProjectApi = (formData, tokenUser) => async(dispatch) => {   
         try {
            dispatch({type: CREATE_PROJECT_REQUEST})
            const config = {
@@ -160,7 +160,7 @@ export const DeleteProjectById = async(id) => {
      
        
        
-       export const UpdateProjectApi = async (projectId, status) => {
+       export const UpdateProjectApi = async (projectId, status, tokenUser) => {
         try {
           const config = {
             headers: {
@@ -182,7 +182,7 @@ export const DeleteProjectById = async(id) => {
 
 
    
-export const GetProjectArchivedApi = () => async(dispatch) => {   
+export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {   
         try {
            dispatch({type: ARCHIVED_PROJECT_REQUEST})
            const config = {
@@ -209,7 +209,7 @@ export const GetProjectArchivedApi = () => async(dispatch) => {
 
 
         
-  export const UpdateProjectArchivedApi = async (projectId, value) => {
+  export const UpdateProjectArchivedApi = async (projectId, value, tokenUser) => {
     try {
       const config = {
         headers: {
