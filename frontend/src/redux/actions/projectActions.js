@@ -16,7 +16,7 @@ import { PROJECT_DATA_FAIL,
 
 const tokenUser = localStorage.getItem('access_token')
    
-  export const GetUserProjectApi= () => async(dispatch) => {
+  export const GetUserProjectApi= (tokenUser) => async(dispatch) => {
 
     console.log(tokenUser)
 
