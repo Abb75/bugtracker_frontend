@@ -62,7 +62,7 @@ useEffect(() => {
       {invitationUser?.map((invitation) => (
         currentUser.groups[0] === 'admin' ? (
         
-          <Card key={invitation.id} sx={{ mb: 2 }}>
+          <Card  key={invitation.id} sx={{ mb: 2 }}>
            
           <CardContent>
             <Typography variant="h6" component="div">
@@ -97,17 +97,17 @@ useEffect(() => {
 
         ) : ( 
        
-          <Card key={invitation.id} sx={{ mb: 2 }}>
+          <Card  key={invitation.id} sx={{ mb: 2 }}>
             
-          <CardContent>
+          <CardContent  style={{marginTop: '10px', height: '160px'}}>
             <Typography variant="h6" component="div">
-              Invitation : {invitation.project}
+              <strong>Project invitation :</strong> {invitation.project}
             </Typography>
             <Typography variant="h6" component="div">
-              Your role : {invitation.role}
+            <strong>Role : </strong>{invitation.role}
             </Typography>
             <Typography variant="h6" component="div">
-              Invited by : {invitation.invited_by}
+            <strong>Invited by :</strong> {invitation.invited_by_name}
             </Typography>
             <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
