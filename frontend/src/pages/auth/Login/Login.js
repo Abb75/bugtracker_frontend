@@ -71,7 +71,6 @@ export  const Login = () => {
 const userLoginDemoInfo = {
   'Admin': { email: 'demoadmin@example.com', password: 'passwordadmin1' },
   'Developer1': { email: 'demodeveloper@example.com', password: 'passworddev1' },
-  'Developer2': { email: 'demodeveloper2@example.com', password: 'passworddev2' },
   'Submitter': { email: 'demosubmitter@example.com', password: 'passwordsub1' }
 };
 
