@@ -68,9 +68,9 @@ export const ProjectForm = () => {
   const AddProject = async() => {
     try{
       formData.submission_date = actualDate
-      await dispatch(PostProjectApi(formData))
-      SendSuccessNotification('Project created with success')
-      navigate(`/project`)
+        await dispatch(PostProjectApi(formData, tokenUser))
+        SendSuccessNotification('Project created with success')
+        navigate(`/project`)
     }catch(error){
       throw error
     }

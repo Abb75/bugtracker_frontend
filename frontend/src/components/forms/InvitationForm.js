@@ -30,7 +30,7 @@ const InvitationForm = () => {
    
 
   }
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const [formData, setFormData] = useState(initialFormData)
   const {name, email, role } = formData
   const handleChange = (e) => {
@@ -51,7 +51,7 @@ const InvitationForm = () => {
   
   const sendInvitation = async() => {
     try {
-      await dispatch(PostInvitationApi(id, formData))
+      await dispatch(PostInvitationApi(id, formData, tokenUser))
       SendSuccessNotification('Invitation send with success')
     }
     catch(error){
