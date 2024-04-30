@@ -6,10 +6,10 @@ import axios from "axios";
 import { INVITATION_USER_REMOVE } from "../constants/invitationConstants";
 
 
-   
+  const tokenUser = localStorage.getItem('access_token')
   export const GetUserApi= (id, tokenUser) => async(dispatch) => {
-    console.log(id, tokenUser)
-    console.log('LOLOLO')
+    console.log(id)
+  
     try{
       const config = {
         headers: { 
@@ -22,7 +22,6 @@ import { INVITATION_USER_REMOVE } from "../constants/invitationConstants";
     } 
           dispatch({type: USER_DATA_REQUEST})
           const {data} = await  axiosInstance.get(process.env.REACT_APP_API_URL + `users/${id}/`,config)
-         console.log(data)
           dispatch({
             type: USER_DATA_SUCCESS,
             payload: data
@@ -36,8 +35,8 @@ import { INVITATION_USER_REMOVE } from "../constants/invitationConstants";
         type : USER_DATA_FAIL,
         payload: error.response
       })
-      console.log(error)
-    }
+      throw error   
+     }
   }
 
 export const DeleteUserData = (dispatch) => {
@@ -133,7 +132,6 @@ export const logout = (tokenUser) => async(dispatch) => {
  
  
  export const PostCreateGuestUserApi = async(formData, uuid)  => {   
-  console.log(formData)
   try {
     
     
@@ -158,8 +156,7 @@ export const logout = (tokenUser) => async(dispatch) => {
 
  
 
- export const GetAllGuestUserByAdmin = (tokenUser) => async(dispatch) => {
-  console.log(tokenUser)
+ export const GetAllGuestUserByAdmin = () => async(dispatch) => {
  
   try{
         dispatch({type: ALL_INVITATION_BY_ADMIN_USER_REQUEST})
@@ -173,7 +170,6 @@ export const logout = (tokenUser) => async(dispatch) => {
             }
           }
         const {data} = await  axiosInstance.get(process.env.REACT_APP_API_URL + 'guests/', config)
-        console.log(data ) 
         dispatch({
           type: ALL_INVITATION_BY_ADMIN_USER_SUCCESS,
           payload: data
@@ -185,13 +181,12 @@ export const logout = (tokenUser) => async(dispatch) => {
       type : ALL_INVITATION_BY_ADMIN_USER_FAIL,
       payload: error.response
     })
-    console.error(error)
+    throw error
   }
 }
 
 
 export const LoginApi = (email, password) => async(dispatch) => {
-  console.log('HEREEEEEEEEEEEEEEEEEEEE')
 
     try{
       dispatch({type: TOKEN_USER_REQUEST})
@@ -214,7 +209,6 @@ export const LoginApi = (email, password) => async(dispatch) => {
         axiosInstance.defaults.headers['Authorization'] = 
               'JWT' + data.access; 
     
-        //localStorage.setItem('id', data.id);
         
       
     }catch(error){
@@ -224,8 +218,7 @@ export const LoginApi = (email, password) => async(dispatch) => {
 }
 
 
-export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId, tokenUser) => {
-  console.log(value,projectId, invitationId, tokenUser)
+export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId) => {
   try{
   
 
@@ -242,14 +235,14 @@ export const UpdateRoleUserByProjectApi = async(value, projectId, invitationId, 
         } , config )
   }catch(error){
    throw error
-    console.log(error)
+   
   }
 }
 
 
 
 export const selectRoleGuestUser = (role)  => (dispatch) => {
-     console.log(role)
+   
      dispatch({
               type: SELECTED_ROLE_GUEST_USER,
               payload: role,
@@ -269,8 +262,7 @@ export const selectRoleGuestUser = (role)  => (dispatch) => {
 
 
 
-export const UpdateUserInfoApi = async(userId, formData, tokenUser) => {
-  console.log(userId,formData)
+export const UpdateUserInfoApi = async(userId, formData) => {
   try{
     const config = {
       headers: { 
@@ -289,14 +281,12 @@ export const UpdateUserInfoApi = async(userId, formData, tokenUser) => {
   
   catch(error){
    throw error
-    console.log(error)
   }
 }
 
 
 
-export const UpdateUserPasswordApi = async(userId, formData, tokenUser) => {
-  console.log(userId,formData)
+export const UpdateUserPasswordApi = async(userId, formData) => {
 
   try{
     
@@ -319,7 +309,6 @@ export const UpdateUserPasswordApi = async(userId, formData, tokenUser) => {
   
 
   catch(error){
-    console.log(error)
     throw error
     
     

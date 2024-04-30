@@ -5,8 +5,8 @@ import { INVITATION_USER_FAIL, INVITATION_USER_REQUEST, INVITATION_USER_SUCCESS 
 import { INVITATION_REQUEST } from "../constants/userConstants"
 
 const tokenUser = localStorage.getItem('access_token')
-export const GetInvitationUser = (tokendUser) => async(dispatch) => {
-
+export const GetInvitationUser = () => async(dispatch) => {
+console.log(tokenUser)
   try {
  
          dispatch({type: INVITATION_USER_REQUEST})
@@ -19,13 +19,11 @@ export const GetInvitationUser = (tokendUser) => async(dispatch) => {
              } 
          } 
         const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + 'guests/' , config )
-         console.log(data)
          dispatch({
              type: INVITATION_USER_SUCCESS,
              payload: data
          })
          }catch(error){
-          console.error(error)
              dispatch({
                  type: INVITATION_USER_FAIL,
                  payload: error
@@ -38,8 +36,7 @@ export const GetInvitationUser = (tokendUser) => async(dispatch) => {
 
 
 
-     export const ConfirmInvitationUserByProjectApi = async(value, projectId, invitationId, tokenUdser) => {
-        console.log(value,projectId, invitationId, tokenUser)
+     export const ConfirmInvitationUserByProjectApi = async(value, projectId, invitationId) => {
         try{
         
       
@@ -59,12 +56,11 @@ export const GetInvitationUser = (tokendUser) => async(dispatch) => {
            
         }catch(error){
          
-          console.log(error)
         }
       }
 
 
-      export const DeleteGuestUserInvitationProjectApi = async(projectId, invitationId, tokenUsedr)  => {   
+      export const DeleteGuestUserInvitationProjectApi = async(projectId, invitationId)  => {   
         try {
          
            const config = {
@@ -87,8 +83,7 @@ export const GetInvitationUser = (tokendUser) => async(dispatch) => {
       
        }
       
-       export const PostInvitationApi = (project_id, formData, tokenUdser) => async(dispatch) => {   
-        console.log(formData)
+       export const PostInvitationApi = (project_id, formData) => async(dispatch) => {   
         try {
            dispatch({type: INVITATION_REQUEST})
            const config = {

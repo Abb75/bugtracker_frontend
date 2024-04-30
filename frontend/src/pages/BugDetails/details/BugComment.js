@@ -47,7 +47,7 @@ export const BugComment = () => {
 
 
     useEffect(() => {
-          dispatch(GetBugCommentsApi(projectId, bugId, tokenUser))
+          dispatch(GetBugCommentsApi(projectId, bugId))
     }, [projectId, bugId])
   
 
@@ -60,7 +60,7 @@ export const BugComment = () => {
 
       const deleteComment =  (commentId) => {
          try{
-            DeleteBugCommentApi(projectId, bugId, commentId, tokenUser)
+            DeleteBugCommentApi(projectId, bugId, commentId)
             
 
          }
@@ -71,8 +71,8 @@ export const BugComment = () => {
 
       const createComment = async(formData) => {
         try {
-           await PostBugCommentApi(projectId, bugId, formData, tokenUser  )
-           await dispatch(GetBugCommentsApi(projectId, bugId, tokenUser));
+           await PostBugCommentApi(projectId, bugId, formData  )
+           await dispatch(GetBugCommentsApi(projectId, bugId));
          
            divRef.current && scrollToBottom();
         }

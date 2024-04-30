@@ -29,7 +29,7 @@ import { BugHistoryData } from "../../../redux/selectors/bugSelectors"
   useEffect(() => {
     try{
        dispatch(selectedBug(searchSelectedBug));
-       dispatch(GetBugHistoryApi(projectId, bugId, tokenUser));
+       dispatch(GetBugHistoryApi(projectId, bugId));
     }
     catch(error){
       throw error

@@ -37,9 +37,9 @@ export const ArchivedBug = () => {
   const handleDeleteConfirmationClose = async (confirmed) => {
     if (confirmed) {
       try { 
-        await  DeleteBugApi(bugIdToDelete, projectId, tokenUser)
-        dispatch(GetBugProjectApi(projectId, tokenUser))
-        dispatch(GetBugArchivedApi(tokenUser))
+        await  DeleteBugApi(bugIdToDelete, projectId)
+        dispatch(GetBugProjectApi(projectId ))
+        dispatch(GetBugArchivedApi())
         SendSuccessNotification('Bug delete with success !')
 
       } catch (error) {
@@ -76,9 +76,9 @@ export const ArchivedBug = () => {
     // Add your logic here based on the selected option
 
     try{
-      await UpdateBugArchivedApi(projectId, bugId,tokenUser,false, null )
+      await UpdateBugArchivedApi(projectId, bugId,false, null )
       SendSuccessNotification('Bug unarchived with success')
-      dispatch(GetBugArchivedApi(tokenUser))
+      dispatch(GetBugArchivedApi())
     }catch(error){
       console.error(error)
     }
@@ -90,7 +90,7 @@ export const ArchivedBug = () => {
 
   useEffect(() => {
     try {
-      dispatch(GetBugArchivedApi(tokenUser))
+      dispatch(GetBugArchivedApi())
 
     }
     catch(error){

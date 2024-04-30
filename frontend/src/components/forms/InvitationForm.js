@@ -51,7 +51,7 @@ const InvitationForm = () => {
   
   const sendInvitation = async() => {
     try {
-      await dispatch(PostInvitationApi(id, formData, tokenUser))
+      await dispatch(PostInvitationApi(id, formData))
       SendSuccessNotification('Invitation send with success')
     }
     catch(error){

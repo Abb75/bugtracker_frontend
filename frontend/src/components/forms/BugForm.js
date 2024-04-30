@@ -68,7 +68,7 @@ export const BugForm = () => {
   const AddBug = async() => {  
     formData['project'] = id
     try{
-       await dispatch(PostBugProjectApi(id,formData, tokenUser))
+       await dispatch(PostBugProjectApi(id,formData))
        navigate(`/project/${id}`)
     }
     catch(error){

@@ -1,5 +1,4 @@
 import axiosInstance from "../../axios";
-import { ARCHIVED_BUG_REQUEST, ARCHIVED_BUG_SUCCESS } from "../constants/bugConstants";
 import { PROJECT_DATA_FAIL,
      PROJECT_DATA_REQUEST,
       PROJECT_DATA_SUCCESS,
@@ -14,11 +13,10 @@ import { PROJECT_DATA_FAIL,
            ARCHIVED_PROJECT_REQUEST,
             ARCHIVED_PROJECT_SUCCESS, 
         ARCHIVED_PROJECT_FAIL } from "../constants/projectConstants";
-import axios from "axios";
 
+const tokenUser = localStorage.getItem('access_token')
    
-  export const GetUserProjectApi= (tokenUser) => async(dispatch) => {
-    console.log(tokenUser, '!!!!!!!!!!!')
+  export const GetUserProjectApi= () => async(dispatch) => {
    try {
 
         dispatch({type: PROJECT_DATA_REQUEST})
@@ -26,7 +24,7 @@ import axios from "axios";
           headers: { 
               'Content-type':  'application/json',
               'Accept': 'application/json',
-              Authorization : `Bearer ${localStorage.getItem('access_token')}`
+              Authorization : `Bearer ${tokenUser}`
              
               
           } 
@@ -34,7 +32,6 @@ import axios from "axios";
       
         const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + 'project', config) // Utilisez le token mis à jour
       
-        console.log(data)
         dispatch({
             type: PROJECT_DATA_SUCCESS,
             payload: data
@@ -52,8 +49,7 @@ import axios from "axios";
     
 
 
-    export const GetProjectDetails = (tokenUser, id) => async(dispatch) => {
-      console.log(tokenUser)
+    export const GetProjectDetails = (id) => async(dispatch) => {
       
         try {
      
@@ -62,13 +58,13 @@ import axios from "axios";
                  headers: { 
                      'Content-type':  'application/json',
                      'Accept': 'application/json',
-                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                     Authorization: `Bearer ${tokenUser}`,
                      
                  } 
              } 
             const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + `project/${id}` , config )
-             console.log(data)
-             dispatch({
+
+            dispatch({
                  type: PROJECT_DETAILS_SUCCESS,
                  payload: data
              }) 
@@ -87,7 +83,6 @@ import axios from "axios";
          }
          
 export const selectProject = (project) => (dispatch) => {
-    console.log(project)
        dispatch({
                 type: SELECT_PROJECT,
                 payload: project,
@@ -106,7 +101,7 @@ export const removeProject = (dispatch) => {
     })
 }
 
-export const DeleteProjectById = async(tokenUser, id) => {
+export const DeleteProjectById = async(id) => {
     try {
  
        
@@ -121,13 +116,13 @@ export const DeleteProjectById = async(tokenUser, id) => {
         await axiosInstance.delete(process.env.REACT_APP_API_URL + `project/${id}` , config )
          
          }catch(error){
-            console.log(error)
-         }
+            throw error       
+            }
      
      
      }
      
-     export const PostProjectApi = (formData, tokenUser) => async(dispatch) => {   
+     export const PostProjectApi = (formData) => async(dispatch) => {   
         try {
            dispatch({type: CREATE_PROJECT_REQUEST})
            const config = {
@@ -155,15 +150,14 @@ export const DeleteProjectById = async(tokenUser, id) => {
            
            
          }catch(error){
-           console.log(error)
+          throw error
          }
      
        }
      
        
        
-       export const UpdateProjectApi = async (projectId, tokenUser, status) => {
-        console.log(projectId, tokenUser,status)
+       export const UpdateProjectApi = async (projectId, status) => {
         try {
           const config = {
             headers: {
@@ -178,15 +172,14 @@ export const DeleteProjectById = async(tokenUser, id) => {
           }, config)
     
         } catch (error) {
-          console.log(error);
+          throw error
         }
       }
       
 
 
    
-export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {   
-  console.log(tokenUser)
+export const GetProjectArchivedApi = () => async(dispatch) => {   
         try {
            dispatch({type: ARCHIVED_PROJECT_REQUEST})
            const config = {
@@ -199,13 +192,12 @@ export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {
              }
          } 
           const {data}=  await axiosInstance.get(process.env.REACT_APP_API_URL + 'archived-project/' , config )
-          console.log(data)
           dispatch({type: ARCHIVED_PROJECT_SUCCESS,
                     payload: data})
            
          }catch(error){
             dispatch({type: ARCHIVED_PROJECT_FAIL})
-           console.log(error)
+         throw error
          }
         }
          
@@ -214,8 +206,7 @@ export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {
 
 
         
-  export const UpdateProjectArchivedApi = async (projectId, tokenUser, value) => {
-    console.log(projectId, tokenUser,value)
+  export const UpdateProjectArchivedApi = async (projectId, value) => {
     try {
       const config = {
         headers: {
@@ -230,7 +221,7 @@ export const GetProjectArchivedApi = (tokenUser) => async(dispatch) => {
       }, config)
 
     } catch (error) {
-      console.log(error);
+     throw error
     }
   }
     

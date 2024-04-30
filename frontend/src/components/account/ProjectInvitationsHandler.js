@@ -16,8 +16,8 @@ export const HandlerInvitationsPage = () => {
  
   const handleConfirmInvitation = async(invitationId, projectId, acceptInvitation) => {
     try{
-        await ConfirmInvitationUserByProjectApi(acceptInvitation, projectId,  invitationId, tokenUser)
-         dispatch(GetInvitationUser(tokenUser))
+        await ConfirmInvitationUserByProjectApi(acceptInvitation, projectId,  invitationId)
+         dispatch(GetInvitationUser())
     }catch(error){
         console.error(error)
     }
@@ -29,7 +29,7 @@ const handleDeleteInvitation = async(invitation, project) => {
  
   try{
       await DeleteGuestUserInvitationProjectApi( project, invitation, tokenUser  )
-      dispatch(GetInvitationUser(tokenUser))
+      dispatch(GetInvitationUser())
   }catch(error){
       console.error(error)
   }
@@ -37,7 +37,7 @@ const handleDeleteInvitation = async(invitation, project) => {
 
 
 useEffect(() => {
-  dispatch(GetInvitationUser(tokenUser))
+  dispatch(GetInvitationUser())
 }, [dispatch, tokenUser])
 
 

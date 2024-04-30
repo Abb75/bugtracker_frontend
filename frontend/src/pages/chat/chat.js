@@ -11,8 +11,7 @@ import './chat.css'
 
 const ChatWindow = ({ projectId }) => {
   const { id } = useParams();
-  const tokenUser = GetTokenUser()
-  console.log(tokenUser)
+  const tokenUser = localStorage.getItem('access_token')
   const user = GetCurrentUser()
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
@@ -25,13 +24,11 @@ const ChatWindow = ({ projectId }) => {
         shouldReconnect: () => true,
     }
   );
-  console.log(readyState)
 
 
 
 
   useEffect(() => {
-    console.log(lastJsonMessage)
     if (!wsConnected){
       sendJsonMessage({ action: 'subscribe_to_messages_in_room', request_id: new Date().getTime(), project_id: id }); 
       sendJsonMessage({ action: 'get_messages_room', request_id: new Date().getTime(), project_id: id });
@@ -41,7 +38,6 @@ const ChatWindow = ({ projectId }) => {
   }, [sendJsonMessage, tokenUser]);
   
   useEffect(() => {
-    console.log(lastJsonMessage);
     if (lastJsonMessage !== null && lastJsonMessage['messages']) {
       setMessages(lastJsonMessage['messages']);
     } else if (lastJsonMessage !== null) {
@@ -78,7 +74,6 @@ const ChatWindow = ({ projectId }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(newMessage)
     if (newMessage.trim() !== '') {
       sendRequest();
     }

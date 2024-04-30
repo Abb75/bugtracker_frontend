@@ -30,7 +30,7 @@ export const UserPassword = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
       try{
-          await UpdateUserPasswordApi(currentUser.id, formData, tokenUser)
+          await UpdateUserPasswordApi(currentUser.id, formData)
           SendSuccessNotification('Password updated ! ')
     }catch(error){
            console.error(error.response.data)

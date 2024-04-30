@@ -10,7 +10,7 @@ import './Logout.css'
 
 export const HandleLogout = () => {
 
-    const tokenUser = GetTokenUser()
+    const tokenUser = localStorage.getItem('access_token')
     const currentUser =  GetCurrentUser()
     const dispatch = useDispatch()
    

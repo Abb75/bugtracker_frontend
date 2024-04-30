@@ -37,9 +37,9 @@ export const ArchivedProject = () => {
 
   const handleMenuItemClick = async (e, projectId) => {
     try {
-      await UpdateProjectArchivedApi(projectId, tokenUser, false);
+      await UpdateProjectArchivedApi(projectId, false);
       SendSuccessNotification('Project unarchived with success');
-      dispatch(GetProjectArchivedApi(tokenUser));
+      dispatch(GetProjectArchivedApi());
     } catch (error) {
       console.error(error);
     }
@@ -57,7 +57,7 @@ export const ArchivedProject = () => {
       try { 
         await DeleteProjectById(tokenUser, projectIdToDelete)  
         // Ajoutez ici la logique de suppression du projet
-        dispatch(GetProjectArchivedApi(tokenUser));
+        dispatch(GetProjectArchivedApi());
         SendSuccessNotification('Project delete with success');
       } catch (error) {
         console.error(error);
@@ -69,7 +69,7 @@ export const ArchivedProject = () => {
 
   useEffect(() => {
     try {
-      dispatch(GetProjectArchivedApi(tokenUser));
+      dispatch(GetProjectArchivedApi());
     } catch (error) {
       console.error(error);
     }

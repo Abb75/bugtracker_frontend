@@ -27,8 +27,7 @@ import axiosInstance from "../../axios";
 const tokenUser = localStorage.getItem('access_token')
 
 
-export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) => {   
-   console.log('DDDDDDDD')
+export const PostBugProjectApi = (id,formData, ) => async(dispatch) => {   
     dispatch({type:ADD_BUG_REQUEST})
      try {
         const config = {
@@ -36,7 +35,7 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
              
               'Content-type':  'application/json',
               'Accept': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              Authorization: `Bearer ${tokenUser}`,
              
           }
       } 
@@ -65,7 +64,7 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
 
 
    
-  export const GetAllBugApi= (tokenUser) => async(dispatch) => {
+  export const GetAllBugApi= () => async(dispatch) => {
    try {
 
         dispatch({type: ALL_BUG_DATA_REQUEST})
@@ -73,12 +72,11 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
             headers: { 
                 'Content-type':  'application/json',
                 'Accept': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                Authorization: `Bearer ${tokenUser}`,
                 
             } 
         } 
         const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + 'bug/' , config )
-        console.log(data)
         dispatch({
             type: ALL_BUG_DATA_SUCCESS,
             payload: data
@@ -93,8 +91,7 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
     
     }
 
-    export const GetBugProjectApi = (id, tokenUser) => async(dispatch) => {   
-       console.log(id)
+    export const GetBugProjectApi = (id) => async(dispatch) => {   
         try {
             dispatch({type: BUG_PROJECT_REQUEST})
            
@@ -103,7 +100,7 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
                  
                     'Content-type':  'application/json',
                     'Accept': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    Authorization: `Bearer ${tokenUser}`,
                 
               }
         
@@ -114,12 +111,10 @@ export const PostBugProjectApi = (id,formData, tokesnUser) => async(dispatch) =>
                 type: BUG_PROJECT_SUCCESS,
                 payload: data
         })
-        console.log(data)
-          //return data.results
+      
             
            
           }catch(error){
-            console.log(error)
             dispatch({
                 type: BUG_PROJECT_FAIL,
                 payload: error
@@ -135,23 +130,21 @@ export const DeleteBugProject = () => (dispatch) => {
 }
 
 
-export const UpdateBugApi =  (projectId, bugId, tokenUser, value, property) => async(dispatch)   =>  {
+export const UpdateBugApi =  (projectId, bugId, value, property) => async(dispatch)   =>  {
 
-  console.log(projectId,bugId, tokenUser,property)
   try{
           dispatch({type: UPDATE_BUG_REQUEST})
               const config = {
                   headers: {
                   'Content-type': 'application/json',
                   'Accept': 'application/json',
-                  Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
+                  Authorization: `Bearer ${tokenUser}`, 
                   }
               }
           
               const {data} = await axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, {
                   [property]:  value
       }, config)
-      console.log(data)
       dispatch({
               type: UPDATE_BUG_SUCCESS,
               payload : data
@@ -162,13 +155,11 @@ export const UpdateBugApi =  (projectId, bugId, tokenUser, value, property) => a
       type: UPDATE_BUG_FAIL,
       payload: error
    })
-    console.log(error);
   }
 }
 
 
-export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(dispatch) => {
-    console.log(projectId,bugId, tokenUser,user)
+export const UpdateUserBugApi =  (projectId, bugId, user) => async(dispatch) => {
     dispatch({type: UPDATE_BUG_REQUEST})
         try {
         const config = {
@@ -182,14 +173,12 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
       const {data} = await axiosInstance.patch(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, {
         assigned_to : user
       }, config)
-      console.log(data)
       dispatch({
         type: UPDATE_BUG_SUCCESS,
         payload : data
     })
 
     } catch (error) {
-      console.error(error)
         dispatch({
             type: UPDATE_BUG_FAIL,
             payload: error
@@ -200,7 +189,6 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
 
 
   export const selectedBug = (bug) => (dispatch) => {
-    console.log(bug)
        dispatch({
                 type: SELECTED_BUG,
                 payload: bug,
@@ -210,7 +198,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
 
 
 
-    export const GetBugHistoryApi = (projectId, bugId, tokenUser) => async(dispatch) => {   
+    export const GetBugHistoryApi = (projectId, bugId) => async(dispatch) => {   
      
        try {
            dispatch({type: BUG_HISTORY_REQUEST})
@@ -230,12 +218,10 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
                type: BUG_HISTORY_SUCCESS,
                payload: data
        })
-       console.log(data)
         return data[0]
            
           
          }catch(error){
-           console.log(error)
            dispatch({
                type:BUG_HISTORY_FAIL,
                payload: error
@@ -243,7 +229,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
          }
      
        }
-       export const GetBugCommentsApi = (projectId, bugId, tokenUser) => async(dispatch) => {   
+       export const GetBugCommentsApi = (projectId, bugId) => async(dispatch) => {   
      
         try {
             dispatch({type: BUG_COMMENT_REQUEST})
@@ -263,12 +249,10 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
                 type: BUG_COMMENT_SUCCESS,
                 payload: data
         })
-        console.log(data)
          return data[0]
             
            
           }catch(error){
-            console.log(error)
             dispatch({
                 type:BUG_COMMENT_FAIL,
                 payload: error
@@ -278,8 +262,7 @@ export const UpdateUserBugApi =  (projectId, bugId, tokenUser, user) => async(di
         }
       
      
-export const PostBugCommentApi = async(projectId,bugId,formData, tokenUser) => {   
-        console.log(formData)
+export const PostBugCommentApi = async(projectId,bugId,formData) => {   
          try {
            
             const config = {
@@ -300,19 +283,17 @@ export const PostBugCommentApi = async(projectId,bugId,formData, tokenUser) => {
 
           
           },  config )
-          console.log(formData)
         
             
            
           }catch(error){
-            console.log(error)
-          }
+              throw error          }
       
         }
     
 
      
-export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) => {   
+export const DeleteBugCommentApi = async(projectId,bugId,commentId) => {   
           
     try {
       const config = {
@@ -326,7 +307,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
     await axiosInstance.delete(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/comment/${commentId}/`, config)
     
     }catch(error){
-      console.log(error)
+      throw error
     }
 
   }
@@ -335,7 +316,7 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
 
 
    
-  export const GetBugIdProjectApi = async(bugId, projectId, tokenUser) =>  {
+  export const GetBugIdProjectApi = async(bugId, projectId) =>  {
     try {
  
          
@@ -348,11 +329,10 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
              } 
          } 
          const {data} = await axiosInstance.get(process.env.REACT_APP_API_URL + `project${projectId}/${bugId}/` , config )
-         console.log(data)
          
          
          }catch(error){
-           
+            throw error
              
          }
      
@@ -364,14 +344,13 @@ export const DeleteBugCommentApi = async(projectId,bugId,commentId, tokenUser) =
 
 
 
-export const DeleteBugApi = async(bugId,projectId,  tokenUser) => {   
-  console.log(bugId, projectId)
+export const DeleteBugApi = async(bugId,projectId) => {   
   try {
     const config = {
       headers: { 
           'Content-type':  'application/json',
           'Accept': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          Authorization: `Bearer ${tokenUser}`,
       }
     } 
   await axiosInstance.delete(process.env.REACT_APP_API_URL + `project/${projectId}/bug/${bugId}/`, config)
@@ -389,8 +368,7 @@ export const DeleteBugApi = async(bugId,projectId,  tokenUser) => {
 
 
 
-export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {   
-  console.log(tokenUser)
+export const GetBugArchivedApi = () => async(dispatch) => {   
         try {
            dispatch({type: ARCHIVED_BUG_REQUEST})
            const config = {
@@ -398,7 +376,7 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
                 
                  'Content-type':  'application/json',
                  'Accept': 'application/json',
-                 Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                 Authorization: `Bearer ${tokenUser}`,
                 
              }
          } 
@@ -408,21 +386,19 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
            
          }catch(error){
             dispatch({type: ARCHIVED_BUG_FAIL})
-           console.log(error)
          }
      
        }
 
 
             
-    export const UpdateBugArchivedApi = async (projectId, bugId, tokenUser, value, user) => {
-      console.log(projectId, tokenUser,value)
+    export const UpdateBugArchivedApi = async (projectId, bugId, value, user) => {
       try {
         const config = {
           headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
+            Authorization: `Bearer ${tokenUser}`, 
           }
         }
     
@@ -432,7 +408,6 @@ export const GetBugArchivedApi = (tokenUser) => async(dispatch) => {
         }, config)
   
       } catch (error) {
-        console.log(error);
-      }
+            throw error      }
     }
 

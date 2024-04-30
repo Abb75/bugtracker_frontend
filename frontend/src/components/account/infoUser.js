@@ -12,7 +12,7 @@ export const UserProfile = () => {
  
   const dispatch = useDispatch()
   const navigate = useNavigate() 
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const [inputError, setInputError] = useState([])
   const currentUser = GetCurrentUser()
 
@@ -37,7 +37,7 @@ export const UserProfile = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-      await UpdateUserInfoApi(currentUser.id, formData, tokenUser)
+      await UpdateUserInfoApi(currentUser.id, formData)
       await dispatch(GetUserApi(localStorage.getItem('id'))); 
       SendSuccessNotification('Update profile with success !')
       navigate('/dashboard')

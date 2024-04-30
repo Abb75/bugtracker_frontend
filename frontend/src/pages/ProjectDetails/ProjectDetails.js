@@ -72,7 +72,7 @@ export const ProjectDetails = () => {
             const status = e.target.innerText
           
             try{
-               UpdateProjectApi(id, tokenUser, status);
+               UpdateProjectApi(id, status);
                setStatus(status)
                getStatusIcon(status)
               }

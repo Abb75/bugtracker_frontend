@@ -5,7 +5,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useDispatch } from 'react-redux';
 import { UpdateRoleUserByProjectApi } from '../../redux/actions/userActions';
 import { GetUserProjectApi } from '../../redux/actions/projectActions';
-import { GetTokenUser } from '../../redux/selectors/userSelectors';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -99,11 +98,10 @@ export const GuestsUser = () => {
 
 
   const handleDeleteConfirmationClose = async (confirmed) => {
-    console.log(confirmed, 'RRRRRRRRRRRRRRR')
     if (confirmed) {
       try { 
-        await DeleteGuestUserInvitationProjectApi(selectedProject.id, userIdToDelete, tokenUser)  
-        dispatch(GetUserProjectApi(tokenUser))
+        await DeleteGuestUserInvitationProjectApi(selectedProject.id, userIdToDelete)  
+        dispatch(GetUserProjectApi())
         SendSuccessNotification('User delete with success');
       } catch (error) {
         console.error(error);

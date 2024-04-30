@@ -96,7 +96,7 @@ export const Bugs = () => {
         const value = e.target.getAttribute('value');
       
         try{    
-              dispatch(UpdateUserBugApi(id, bugId , tokenUser, userId))
+              dispatch(UpdateUserBugApi(id, bugId , userId))
               setBugStates((bugStates) =>
             
                 bugStates.map((bug) => {
@@ -121,7 +121,7 @@ export const Bugs = () => {
         const previousPriority = bugStates.find(bug => bug.id === bugId)?.priority;
 
         const value = e.target.getAttribute('value');
-              dispatch(UpdateBugApi(id,bugId,tokenUser, value , property ))
+              dispatch(UpdateBugApi(id,bugId, value , property ))
               setBugStates((bugStates) =>
               
                   bugStates.map((bug) => {
@@ -150,7 +150,7 @@ export const Bugs = () => {
   useEffect(() => {
     const fetchData = async() => {
       try {
-        await dispatch(GetBugProjectApi(id, tokenUser))
+        await dispatch(GetBugProjectApi(id))
       } catch(error) {
         console.log(error);
       }
@@ -182,33 +182,11 @@ export const Bugs = () => {
     setCountOfTotalbugArchived(archivedCount);
     setCountTotalCriticalBug(criticalCount);
   }, [bugProject, projectData.invitation]);
-/*
-  useEffect(() => {
-    let archivedCount = 0;
-    let criticalCount = 0;
-    let totalCount = 0;
-
-    bugProject?.forEach(bug => {
-      if (bug.is_archived) {
-        archivedCount += 1;
-      } else if (bug.priority === 'Critical' ) {
-        criticalCount += 1;
-        totalCount += 1;
-      } else {
-        totalCount += 1;
-      }
-    });
-
-    setCountOfTotalBug(totalCount);
-    setCountOfTotalbugArchived(archivedCount);
-    setCountTotalCriticalBug(criticalCount);
-  }, [bugProject]);
-*/
 
 
 const handleArchivedBug = async (bugId, shouldArchive) => {
   try {
-    await UpdateBugArchivedApi(id, bugId, tokenUser, shouldArchive, currentUser.id);
+    await UpdateBugArchivedApi(id, bugId, shouldArchive, currentUser.id);
   } catch (error) {
     console.log(error);
   }

@@ -19,24 +19,8 @@ export const ProjectDetailsPage = () => {
   const { id } = useParams();    
   const tokenUser = localStorage.getItem('access_token');
 
-  /*
-  useEffect(() => {
-   
-    console.log(id)
-    const dispatchProjectDetails = async() => {
-      try {
-        await dispatch(GetProjectDetails(tokenUser, id));
-       
-      } catch(error) {
-        throw error;
-      }
-    
-      dispatchProjectDetails();
-}}, [dispatch]);
-*/
 
 
- console.log(id)
 return (
   
       <Container id="ProjectContainer" style={{ height: 'auto' }}>
