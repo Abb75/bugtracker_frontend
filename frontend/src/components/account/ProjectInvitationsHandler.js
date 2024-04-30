@@ -16,7 +16,7 @@ export const HandlerInvitationsPage = () => {
  
   const handleConfirmInvitation = async(invitationId, projectId, acceptInvitation) => {
     try{
-        await ConfirmInvitationUserByProjectApi(acceptInvitation, projectId,  invitationId)
+        await ConfirmInvitationUserByProjectApi(acceptInvitation, projectId,  invitationId, tokenUser)
          dispatch(GetInvitationUser())
     }catch(error){
         console.error(error)

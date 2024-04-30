@@ -37,8 +37,8 @@ export const UserProfile = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-      await UpdateUserInfoApi(currentUser.id, formData)
-      await dispatch(GetUserApi(localStorage.getItem('id'))); 
+      await UpdateUserInfoApi(currentUser.id, formData, tokenUser)
+      await dispatch(GetUserApi(localStorage.getItem('id'), tokenUser)); 
       SendSuccessNotification('Update profile with success !')
       navigate('/dashboard')
     }catch(error){
