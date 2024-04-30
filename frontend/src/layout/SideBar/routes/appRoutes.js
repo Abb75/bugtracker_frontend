@@ -21,11 +21,9 @@ import { GetInvitationGuestUser } from '../../../redux/selectors/invitationSelec
 
 export const GetAppRoutes = () => {
   const invitationUser = GetInvitationGuestUser()
-  console.log(invitationUser)
   const currentUser = GetCurrentUser()
   const isAdminUser = (currentUser?.groups && currentUser.groups[0] === 'admin') || null;
-  console.log(currentUser
-  )
+  
   // Définissez les routes en fonction de currentUser
   const appRoutes = [
 

@@ -9,8 +9,7 @@ import { SettingsBrightnessRounded } from '@mui/icons-material';
 export const BoxCountTickets = () => {
 
     const bugCount = Allbug()   
-    console.log(bugCount) 
-     console.log(bugCount)
+
 
     const countProject = useSelector(state => state.project.project)
 

@@ -43,6 +43,7 @@ const tokenUser = localStorage.getItem('access_token')
 
         
         console.log(error)
+        console.log(tokenUser)
             dispatch({
                 type: PROJECT_DATA_FAIL,
                 payload: error
