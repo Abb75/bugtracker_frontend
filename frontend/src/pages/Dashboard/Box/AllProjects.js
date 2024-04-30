@@ -1,9 +1,11 @@
 import React from 'react';
 import { Typography, Box, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { GetCurrentUser } from '../../../redux/selectors/userSelectors';
 
 export const BoxCountProject = () => {
 
+  const currentUser = GetCurrentUser()
     const countProject = useSelector(state => state.project.project )
 
     const filterProjectData = countProject?.filter(
@@ -19,12 +21,15 @@ export const BoxCountProject = () => {
      {filterProjectData?.length ??  '0'}
     </Typography>
  
-    <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>
-   Active Project(s)
-
-    </Typography>
-    
-    
+    {currentUser.groups[0] === 'admin' ? (
+  <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>
+    Active Project(s)
+  </Typography>
+) : (
+  <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>
+    Related Project(s)
+  </Typography>
+)}    
     
   </Box>
   

@@ -8,6 +8,7 @@ import { SettingsBrightnessRounded } from '@mui/icons-material';
 
 export const BoxCountTickets = () => {
 
+  const currentUser = GetCurrentUser()
     const bugCount = Allbug()   
 
 
@@ -30,11 +31,16 @@ export const BoxCountTickets = () => {
   <Typography color={'black'} variant="h4" component="h2">
      {totalTicket?.length ??  '0'}
     </Typography>
- 
-    <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit'}}>
-   Total Ticket(s)
-
-    </Typography>
+    {currentUser.groups[0] === 'admin' ? (
+  <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit' }}>
+    Total Ticket(s)
+  </Typography>
+) : (
+  <Typography color={'black'} style={{ fontWeight: 'bold', fontFamily: 'inherit' }}>
+    Total assigned Ticket(s)
+  </Typography>
+)}
+  
     
     
     
