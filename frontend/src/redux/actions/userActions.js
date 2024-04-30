@@ -47,12 +47,8 @@ export const DeleteUserData = (dispatch) => {
 }
   
 
-export const logout = (tokenUser) => async(dispatch) => {
- 
+export const logout = () => async(dispatch) => {
 
-  
-  
-    
     try{
         dispatch({
           type : USER_DATA_LOGOUT
