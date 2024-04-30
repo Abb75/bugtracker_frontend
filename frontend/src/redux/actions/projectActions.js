@@ -17,6 +17,9 @@ import { PROJECT_DATA_FAIL,
 const tokenUser = localStorage.getItem('access_token')
    
   export const GetUserProjectApi= () => async(dispatch) => {
+
+    console.log(tokenUser)
+
    try {
 
         dispatch({type: PROJECT_DATA_REQUEST})
