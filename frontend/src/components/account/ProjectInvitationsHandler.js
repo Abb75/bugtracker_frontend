@@ -9,7 +9,7 @@ import { GetTokenUser } from '../../redux/selectors/userSelectors';
 
 export const HandlerInvitationsPage = () => {
   const dispatch = useDispatch() 
-  const tokenUser = GetTokenUser()
+  const tokenUser = localStorage.getItem('access_token')
   const currentUser = GetCurrentUser()
   const invitations = GetInvitationGuestUser()
   const [invitationUser, setInvitationUser] = useState(invitations)
@@ -37,7 +37,7 @@ const handleDeleteInvitation = async(invitation, project) => {
 
 
 useEffect(() => {
-  dispatch(GetInvitationUser())
+  dispatch(GetInvitationUser(tokenUser))
 }, [dispatch, tokenUser])
 
 
