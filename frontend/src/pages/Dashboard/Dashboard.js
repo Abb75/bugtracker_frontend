@@ -34,11 +34,11 @@ export const Dashboard = () => {
    
     const navigate = useNavigate();
 
-    const dispatchProjectData = () =>{
+    const dispatchProjectData = async() =>{
         try{
-            dispatch(GetInvitationUser())
-            dispatch(GetUserProjectApi());
-            dispatch(GetAllBugApi())   }
+            await dispatch(GetInvitationUser())
+            await dispatch(GetUserProjectApi());
+            await dispatch(GetAllBugApi())   }
        catch(error){
             throw error
         }
