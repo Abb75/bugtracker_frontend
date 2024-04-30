@@ -36,9 +36,9 @@ export const Dashboard = () => {
 
     const dispatchProjectData = () =>{
         try{
-             dispatch(GetInvitationUser())
+             dispatch(GetInvitationUser(tokenUser))
              dispatch(GetUserProjectApi(tokenUser));
-             dispatch(GetAllBugApi())   }
+             dispatch(GetAllBugApi(tokenUser))   }
        catch(error){
             throw error
         }
