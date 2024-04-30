@@ -198,6 +198,7 @@ export const LoginApi = (email, password) => async(dispatch) => {
       })  
       console.log(data)
        
+        await dispatch(GetUserApi(data.id, data.access))
       
         
         localStorage.setItem('access_token', data.access);
@@ -205,7 +206,6 @@ export const LoginApi = (email, password) => async(dispatch) => {
         axiosInstance.defaults.headers['Authorization'] = 
               'JWT' + data.access; 
     
-        await dispatch(GetUserApi(data.id, data.access))
       
     }catch(error){
     throw error
