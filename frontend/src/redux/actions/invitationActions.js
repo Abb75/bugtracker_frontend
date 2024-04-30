@@ -5,7 +5,7 @@ import { INVITATION_USER_FAIL, INVITATION_USER_REQUEST, INVITATION_USER_SUCCESS 
 import { INVITATION_REQUEST } from "../constants/userConstants"
 
 const tokenUser = localStorage.getItem('access_token')
-export const GetInvitationUser = () => async(dispatch) => {
+export const GetInvitationUser = (tokenUser) => async(dispatch) => {
 console.log(tokenUser)
   try {
  

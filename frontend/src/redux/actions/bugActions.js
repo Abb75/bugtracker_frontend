@@ -64,7 +64,7 @@ export const PostBugProjectApi = (id,formData, ) => async(dispatch) => {
 
 
    
-  export const GetAllBugApi= () => async(dispatch) => {
+  export const GetAllBugApi= (tokenUser) => async(dispatch) => {
    try {
 
         dispatch({type: ALL_BUG_DATA_REQUEST})
