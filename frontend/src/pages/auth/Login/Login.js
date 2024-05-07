@@ -83,11 +83,9 @@ const handleSubmitLoginDemo = async (user) => {
       setIsAuthenticated(true);
      
       SendSuccessNotification('Login with success')
-    } else {
-      console.log('Utilisateur non valide');
-    }
+    } 
   } catch (error) {
-    console.log('Erreur lors de la connexion de démonstration :', error);
+    throw error
   }
 };
           

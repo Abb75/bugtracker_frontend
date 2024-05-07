@@ -195,7 +195,6 @@ export const LoginApi = (email, password) => async(dispatch) => {
 
         payload: data
       })  
-      console.log(data)
        
         await dispatch(GetUserApi(data.id, data.access))
       

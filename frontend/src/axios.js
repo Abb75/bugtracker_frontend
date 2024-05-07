@@ -4,7 +4,6 @@ import { GetTokenUser } from "./redux/selectors/userSelectors";
 const baseUrl = process.env.REACT_APP_API_URL 
 
 export function isTokenExpired(token) {
-    console.log('AB')
     if (!token) {
         // Supprimer les tokens du local storage
         localStorage.removeItem('access_token');

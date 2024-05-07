@@ -18,8 +18,6 @@ const tokenUser = localStorage.getItem('access_token')
    
   export const GetUserProjectApi= (tokenUser) => async(dispatch) => {
 
-    console.log(tokenUser)
-
    try {
 
         dispatch({type: PROJECT_DATA_REQUEST})
@@ -54,7 +52,6 @@ const tokenUser = localStorage.getItem('access_token')
 
 
     export const GetProjectDetails = (id, tokenUser) => async(dispatch) => {
-      console.log(tokenUser)
         try {
      
              dispatch({type: PROJECT_DETAILS_REQUEST})
